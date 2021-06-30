@@ -266,7 +266,26 @@ nav ul {
     position: absolute;
     top: -15px;
     right: 0;
+    z-index:100;
+
 }
+#z-example {
+    position:absolute;
+    background:yellow;
+    width: 100px;
+    height: 100px;
+    z-index:1;
+}/*나중에 쓰였으니까 위에 있다. z인덱스 값 차이 이렇게 주면 값 더 큰 애가 위*/
+
+#z-inner {
+    position:absolute;
+    background:red;
+    width: 50px;
+    height: 50px;
+    z-index:1000;
+}/*1000이어도 ul보다 아래. 쌓임맥락 ul이 z-example 이김. 
+z-inner는 ul을 이기지만 z-inner는 ul에게 진 z-example의 자식.
+그래서 최종적으로는 z-inner가 ul을 이기지 못한다 팝언 관리에 중요*/
 
 #rank-number {
   margin-top: -9px;
@@ -461,3 +480,4 @@ frame, center, font, marquee 안 쓰는 옛날 태그들*/
 
 /*스크롤바 안생기게 하려면 overflow hidden가 아니라 스크롤바 안 생길 때까지 height 계속 늘려주기도 
 아니라 scrolling no attribute*/
+
