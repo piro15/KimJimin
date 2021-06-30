@@ -3,31 +3,78 @@
         <meta charset="utf-8" />
         <title>Git Hub</title>
         <link rel="shortcut icon" type="image/x-icon" href="./favicon-dark.png  " />
+        <link rel="stylesheet" href="./GitHub.css">
     </head>
-    <body>
+    <body >
         <nav>
-            <h1>로고</h1>
-            <h2>소개</h2>
-            <ul>
-                <span>Why GitHub?</span>
-                <span>Team</span>
-                <span>Enterprise</span>
-                <span>Explore</span>
-                <span>Marketplace</span>
-                <span>Pricing</span>
-            </ul>
-            <h2>검색</h2>
-            <h3>로그인</h3>
-            <h3>가입</h3>
+            <div class="center-align">
+                <div id="nav-first-block">
+                    <h1 class="blind">logo</h1>
+                    <div id="nav-introduction">
+                        <span>why github?</span>
+                        <span>team</span>
+                        <span>enterprise</span>
+                        <span>explore</span>
+                        <span>marketplace</span>
+                        <span>pricing</span>
+                    </div>
+                </div>
+                <div id="nav-second-block">
+                    <h2 class="blind">search</h2>
+                    <input id="search" value="Search GitHub"; />
+                    <button id="SignIn" >Sign in</button>
+                    <button id="SignUp">Sign up</button>
+                    <h2 class="blind">sign in</h2>
+                    <h2 class="blind">sign up</h2>
+                </div>
+            </div>
         </nav>
         <main>
-            <h4>개요</h4>
-            <ul>
-                <span>Title</span>
-                <span>Content</span>
-            </ul>
-            <h5>로그인</h5>
-            
-        </main>
+            <div class="center-align">
+                <div id="main-summary">
+                    <h3 class="blind">summary</h3>
+                        <ul>
+                            <span id="main-summary-title">Built for developers</span>
+                            <div id="main-summary-content">
+                                <span style="font-weight: 200;">GitHub is a development platform inspired by the way you work. From </span>
+                                <span style="font-weight: 600;">open source</span>
+                                <span style="font-weight: 200;"> to </span>            
+                                <span style="font-weight: 600;">business</span>
+                                <span style="font-weight: 200;">, you can host and review code, manage projects, and build software alongside 50 million developers.</span>
+                        </div>
+                        </ul>
+                </div>
+                <div id="main-login">
+                    <h4 class="blind">login</h4>
+                        <ul>
+                            <div class="login-title">
+                            <span >username</span>
+                            </div>
+                            <input id="username"/>
+                            <div class="login-title">
+                                <span >email</span>
+                            </div>
+                            <input id="email"/>
+                            <div class="login-title">
+                                <span >password</span>
+                            </div>
+                            <input id="password"/>
+                            <div>
+                                <span class="description">Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.</span>
+                                <span class="highlight">Learn more.</span>
+                                <span class="highlight">sign up for github</span>
+                                <span class="description">By clicking "Sign up for GitHub", you agree to our </span>
+                                <span class="highlight">Terms of Service</span>
+                                <span class="description"> and </span>
+                                <span class="highlight">Privacy Statement.</span>
+                                <span class="description">We'll occasionally send you account related emails.</span>
+                            </div>
+                        </ul>
+                </div>
+            </div>
+            </main>
+        <footer>
+        </footer>
     </body>
-</html>   
+    
+</html>
