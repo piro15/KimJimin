@@ -60,7 +60,9 @@ header {
   font-size: 11px;
   line-height: 22px; /*너무 작게 주면 여러 줄의 글자들이 서로 겹친다.*/
 }
-
+.relative {
+    position:relative;
+}
 .center-align {
   margin: 0 auto;
   width: 1080px;
@@ -181,14 +183,14 @@ nav ul {
   list-style: none;
 }
 
-nav li {
+#nav-menu li {
   display: inline-block;
 }
 
-nav li span:first-child {
+#nav-menu li span:first-child {
   height: 16px;
   display: inline-block;
-  background-image: url(./sp_nav.png);
+  background-image: url(https://s.pstatic.net/static/www/img/uit/2019/sp_nav.png);
   background-repeat: no-repeat;
   margin-left: 10px;
 }
@@ -196,40 +198,40 @@ nav li span:first-child {
 /*!important는 최후의 수단. 피하는 게 좋다.
 차라리 태그, 클래스 여러 개 붙이는 꼼수가 낫다."*/
 
-nav li:first-child span:first-child {
+#nav-menu li:first-child span:first-child {
   width: 25px;
   background-position: 0 -285px;
   margin-left: 0;
 }
 
-nav li:nth-child(2) span:first-child {
+#nav-menu li:nth-child(2) span:first-child {
   width: 27px;
   background-position: -279px -52px;
 }
 
-nav li:nth-child(3) span:first-child {
+#nav-menu li:nth-child(3) span:first-child {
   width: 40px;
   background-position: -100px -182px;
 }
 
-nav li:nth-child(4) span:first-child {
+#nav-menu li:nth-child(4) span:first-child {
   width: 40px;
   background-position: -101px -156px;
 }
 
-nav li:nth-child(5) span:first-child {
+#nav-menu li:nth-child(5) span:first-child {
   width: 26px;
   background-position: -279px -156px;
 }
 
-nav li:nth-child(6) span:first-child {
+#nav-menu li:nth-child(6) span:first-child {
   width: 25px;
   background-position: -70px -285px;
 }
 
-nav li:nth-child(7) span:first-child {
+#nav-menu li:nth-child(7) span:first-child {
     width: 30px;
-    background-position: -70px -285px;
+    background-position: -125px -130px;
   }
 
 .nav-divider {
@@ -242,8 +244,28 @@ nav li:nth-child(7) span:first-child {
 
 #search-ranking {
   position: absolute;
-  top: 183px;
-  right: 100px;
+  top: 14px;
+  right: 0;
+  width: 198px;
+  height: 20px;
+}
+
+#search-ranking:hover ul {/*서치 랭킹 스타일 아니고 서치랭킹 ul의 스타일 변경이니까*/
+ display: inline-block;
+}
+#search-ranking ul {
+    display: none;/*
+    평소에는 안 보이게*/
+    list-style: none;
+    padding: 17px;
+    margin: 0;
+    width: 332px;
+    height: 334px;
+    border: 1px solid #aaa;
+    background: white;
+    position: absolute;
+    top: -15px;
+    right: 0;
 }
 
 #rank-number {
@@ -316,7 +338,8 @@ main {
     margin-bottom: 8px;
 }
 
-#main-ytn h3, #main-ytn ol {
+#main-ytn h3, 
+#main-ytn ol {
     display: inline-block;
 }
 
