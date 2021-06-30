@@ -12,6 +12,14 @@ body {
   font-family: Dotum, "돋움", Helvetica, "Apple SD Gothic Neo", sans-serif;
 }
 
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
 #fixed {
   position: fixed;
   top: 50px;
@@ -55,7 +63,7 @@ header {
 
 #header-search {
   clear: both; /*안겹치게*/
-  padding-top: 12px; /*내부의 여유 공간은 패딩 외부간격은 마진 애매할 때 안전한 건 패딩*/
+  padding-top: 45px; /*내부의 여유 공간은 패딩 외부간격은 마진 애매할 때 안전한 건 패딩*/
 }
 
 #header-search a {
@@ -246,12 +254,17 @@ main {
 }
 
 #main-centered{
-    padding:8px 10px 0;
+    padding:8px 10px ;
     width:1100px;
 }
 
+#main-first-block{
+    display:inline-block;
+    width:100%;
+}
+
 #main-ad{
-    display: inline-block;
+    float:left;
     width: 740px;
     height: 120px;
     background:#555;
@@ -260,13 +273,22 @@ main {
 }
 
 #main-login{
-    display: inline-block;
+    float:left;
     width: 332px;
     height: 120px;
     vertical-align: top;
     background-color:white;
     margin-bottom: 8px;
 
+}
+
+#main-second-block .inline-block:first-child {
+    width: 740px;
+}
+
+#main-second-block .inline-block:last-child {
+    width: 332px;
+    vertical-align: top;
 }
 
 #main-ytn{
@@ -276,6 +298,36 @@ main {
     background-color:white;
     margin-right:8px;
     margin-bottom: 8px;
+}
+
+#main-ytn h3, #main-ytn ol {
+    display: inline-block;
+}
+
+#main-newsstand ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#main-newsstand li{
+float: left;
+width: 185px;
+height: 67px;
+border-right:1px solid #f1f3f6;
+border-bottom: 1px solid #f1f3f6;
+text-align: center;
+}
+
+#main-newsstand li img {
+position:relative;
+top:50%;
+transform: translateY(-50%);/*자기 높이의 반절만큼 위로*/
+}
+
+#main-newsstand h3{
+    height: 45px;
+    border-bottom: 1px solid #ebeef3;
 }
 
 #main-newsstand{
@@ -304,33 +356,44 @@ main {
     margin-bottom: 8px;
 
 }
-
+#main-third-block,
+#main-fourth-block{
+    display: inline-block;
+    width: 100%;
+}
 
 #main-category{
-    display: inline-block;
+float:left;
     width: 740px;
     height: 837px;
     background-color:white;/*-color 안 써도 됨. 색깔 쓰면 색깔. url쓰면 이미지*/
+    margin-bottom:8px;
+    margin-right:8px;
+
 }
 
 
 #main-shopping{
-    display: inline-block;
+    float:left;
     width: 332px;
     height: 837px;
     background-color:white;
+    margin-bottom:8px;
+
 }
 
 #main-event{
-    display: inline-block;
+    float:left;
     width: 740px;
     height: 130px;
     background-color:white;
     vertical-align: top;
+    margin-right:8px;
+
 }
 
 #main-third-ad {
-    display: inline-block;
+    float:left;
     width: 332px;
     height: 130px;
     background-color:#555;
