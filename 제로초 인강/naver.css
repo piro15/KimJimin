@@ -22,6 +22,9 @@ h1,h2,h3,h4,h5,h6 {
     display: inline-block;
 }
 
+.float-left {
+    float:left;
+}
 #fixed {
   position: fixed;
   top: 50px;
@@ -288,25 +291,28 @@ main {
 
 }
 
-#main-second-block .inline-block:first-child {
-    width: 740px;
-}
-
-#main-second-block .inline-block:last-child {
-    width: 332px;
-    vertical-align: top;
-}
 #main-second-block {
     display: inline-block;
     vertical-align: top;
     margin-bottom:8px;
 }
+
+#main-second-block .float-left:first-child {
+    width: 740px;
+    margin-right:8px;
+}
+
+#main-second-block .float-left:last-child {
+    width: 332px;
+    vertical-align: top;
+}
+
 #main-ytn{
     display: inline-block;
     width: 740px;
     height: 46px;
     background-color:white;
-    margin-right:8px;
+  
     margin-bottom: 8px;
 }
 
@@ -347,7 +353,7 @@ transform: translateY(-50%);/*자기 높이의 반절만큼 위로*/
     height: 246px;
     background-color:white;
     margin-right:8px;
-   
+    vertical-align: top;
 }
 
 #main-weather{
@@ -355,8 +361,8 @@ transform: translateY(-50%);/*자기 높이의 반절만큼 위로*/
     width: 332px;
     height: 142px;
     background-color:white;
-  
-
+   vertical-align: top;
+   margin-bottom: 8px;
 }
 
 #main-second-ad{
@@ -364,7 +370,7 @@ transform: translateY(-50%);/*자기 높이의 반절만큼 위로*/
     width: 332px;
     height: 150px;
     background:#555;
-
+    vertical-align: top;
 
 }
 #main-third-block,
@@ -372,13 +378,12 @@ transform: translateY(-50%);/*자기 높이의 반절만큼 위로*/
     display: inline-block;
     width: 100%;
     vertical-align: top;
-    margin-bottom:8px;
 }
 
 #main-category{
 float:left;
     width: 740px;
-    height: 837px;
+    height: 882px;
     background-color:white;/*-color 안 써도 됨. 색깔 쓰면 색깔. url쓰면 이미지*/
     margin-bottom:8px;
     margin-right:8px;
@@ -388,11 +393,16 @@ float:left;
 
 #main-shopping{
     float:left;
-    width: 332px;
-    height: 837px;
+    width: 330px;
+    height: 882px;
     background-color:white;
     margin-bottom:8px;
 
+}
+
+#main-shopping iframe{
+    width: 100%;
+    height: 100%;
 }
 
 #main-event{
@@ -407,7 +417,7 @@ float:left;
 
 #main-third-ad {
     float:left;
-    width: 332px;
+    width: 330px;
     height: 130px;
     background-color:#555;
 }
@@ -421,3 +431,10 @@ float:left;
 
 플롯하면 부모가 자식 인지 못함. 부모가 블록 포맷 컨텍스트 형성해야함. overflow auto
 아니면 display inline block && width 100%*/
+
+/*iframe: 웹사이트 안에 또 다른 웹사이트를 넣은 것
+
+frame, center, font, marquee 안 쓰는 옛날 태그들*/
+
+/*스크롤바 안생기게 하려면 overflow hidden가 아니라 스크롤바 안 생길 때까지 height 계속 늘려주기도 
+아니라 scrolling no attribute*/
