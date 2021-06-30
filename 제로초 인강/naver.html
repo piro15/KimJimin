@@ -8,9 +8,14 @@
     </head>
     <body>
         <header>
-            <div id="fixed">고정</div>
+            
+            <div style="background-color: yellow;">
+                <div style="float: right; background-color : red; height: 200px;">둥둥둥둥</div>
+                <div>가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하</div><!--부모 태그라고 해서 무조건 자식 다 감싸지 않는다.블록 서식 문맥
+auto는 넘치면 스크롤바 만들고 hidden이면 넘치는 부분 잘라버린다. visible이면 블록 컨텍스가 아니라서 그냥 넘처버림. 감싸기 싫으면 inline block ,overflow auto-->
+            </div>
             <div class="center-align"> <!--가운데 정렬용 div-->
-                <span>네이버를 시작페이지로</span>
+                <span>네이버를 시작페이지로</span><!--오른쪽으로 붙이려면 1. 오른쪽 정렬, 2. position absolute 3. float right 3번은 공간 변화 유. 1번은 공간 변화 무-->
                 <span>쥬니어네이버</span>
                 <span>해피빈</span>
                 <div id="header-search">
