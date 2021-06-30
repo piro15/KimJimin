@@ -21,17 +21,19 @@
                         </h1>
                     </a>
                     <h2 class="blind">검색창</h2>
-                    <fieldset>
-                        <legend class="blind">검색</legend>
-                        <input />
-                        <span id="search-keyboard"></span>
-                        <span id="search-history"></span>
+                    <form class="inline-block" action="">
+                        <fieldset>
+                            <legend class="blind">검색</legend>
+                            <input />
+                            <span id="search-keyboard"></span>
+                            <span id="search-history"></span>
 
-                        <button>
-                            <span class="blind">검색</span>
-                            <span id="search-image"></span>
-                        </button>
-                    </fieldset>
+                            <button><!--type ="button"이면 이동 안하고 이동하게 하고 싶으면 "submit"-->
+                                <span class="blind">검색</span>
+                                <span id="search-image"></span>
+                            </button>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
         </header>
@@ -85,10 +87,6 @@
                             <span class="rank-titile">제로초</span>
                         </li>
                     </ul>
-                    <div id="z-example">
-                        <div id="z-inner"></div>
-                </div>
-                    
                 </div>
                 <ul id="nav-menu"> <!--undordered list--><!--ol태그도 있어요!-->
                     <li><a href=""><span class="nav-item-mail"></span><span class="blind">메일</span></li> <!--list item-->
@@ -119,9 +117,19 @@
             <div id="main-centered" class="center-align">
             <div id="main-first-block">
                 <div id="main-ad"></div>
-                
-                <div id="main-login"><h3>로그인</h3></div>
+                <div id="main-login">
+                    <h3 class="blind">로그인</h3>
+                    <div class="login-wrapper">
+                        <span class="login-text">네이버를 더 안전하고 편리하게 이용하세요.</span>
+                        <a href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com">
+                            <span class="blind">NAVER 로그인</span>
+                            <span class="login-image"></span>
+                        </a>
+                        <a class="login-signup" href="https://nid.naver.com/nidregister.form?url=https%3A%2F%2Fwww.naver.com">회원가입</a>
 
+                        <!--클릭->동작이면 버튼.그냥 화살표, 다른 주소 이동이면 a태그.손가락-->
+                    </div>
+                </div>
             </div>
             <div id="main-second-block">
                     <div class="float-left">
