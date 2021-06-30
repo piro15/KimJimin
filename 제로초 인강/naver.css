@@ -124,11 +124,16 @@ nav li span:first-child {
   display: inline-block;
   background-image: url(./sp_nav.png);
   background-repeat: no-repeat;
+  margin-left: 14px;
 }
+
+/*!important는 최후의 수단. 피하는 게 좋다.
+차라리 태그, 클래스 여러 개 붙이는 꼼수가 낫다."*/
 
 nav li:first-child span:first-child {
   width: 25px;
   background-position: 0 -285px;
+  margin-left: 0;
 }
 
 nav li:nth-child(2) span:first-child {
