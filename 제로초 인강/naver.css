@@ -31,9 +31,24 @@ body {
   height: 1px;
 }
 
+#header-top {
+  float: right;
+}
+
+#header-top span {
+  color: #888; /*원래 888888인데 같은 숫자*6이면 반으로 줄이기 가능*/
+  letter-spacing: -1px;
+  font-size: 11px;
+  line-height: 22px; /*너무 작게 주면 여러 줄의 글자들이 서로 겹친다.*/
+}
+
 .center-align {
   margin: 0 auto;
   width: 1080px;
+}
+
+#header-search {
+  clear: both; /*안겹치게*/
 }
 
 #header-search a {
