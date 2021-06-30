@@ -527,16 +527,51 @@ float: left;
 
 #subject-list {
     width: 603px;
-    position: relative;
+    position: relative; /*여야지 컨테이닝 블록된다 컨테이닝 블록 기준으로 position absolute ㅡㄷㄹ어가니까 필요함*/
 }
 #subject-list ul{
     list-style:none;
     margin:0;
     padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 45px;
 }
 
 #subject-list li{
     float: left;
+    margin-right:10px;
+    padding: 14px 7px 0;
+    font-size: 14px;
+    font-family: NanumSquare,Dotum,"돋움",Helvetica,AppleSDGothicNeo,sans-serif;
+
+}
+.opacity {/*불투명도. 1아면 불투명. 0이면 투명*/
+    opacity: 0.5;
+    background: white;
+}
+
+.opacity.left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 45px;
+    width: 15px;
+}
+
+.opacity.right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 45px;
+    width: 15px;
+
+}
+#subject-list li.highlight {
+    border-bottom: 3px solid #00c73c;
+    color: #00b336;
+    height: 45px;
+font-weight: 700;/*기본이 400 normal 얇게: 400 미만 lighter, 굵게: 400 초과 bolder*/
 }
 #subject-all, #subject-prev, #subject-next {
     position: relative;/*absolute보면 컨테이닝 블럭 생각. 컨테이닝 블럭 되려면 relative*/
@@ -546,6 +581,9 @@ float: left;
     background: white;
     
 }
+/*한 줄로 쭉 나오게 하는 것: white space nowrap,
+튀어나오는 것 없게 : overflow hidden 
+height도 꼭 지정해 줘야 한다*/
 
 #subject-all span:last-child{
     position: absolute;
