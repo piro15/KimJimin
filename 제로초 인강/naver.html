@@ -7,13 +7,6 @@
         <link rel="stylesheet" href="./naver.css">
     </head>
     <body>
-        <div style="height:20px; margin-bottom:20px;background:yellow"></div><!--마진 콜랩싱. 좌우 마진은 압겹치는데 상하 마진은 겹친다1. 형제 태그 간에. 2. height없는 빈태그끼리.
-        3. 첫번째 자식이 margin top이 있거나 마지막 자식이 margin bottom 있을 때 해결 방법 1. overflow auto. 근데 스크롤생긴다. 2. overflow hidden. 부모는 보이는데 자식 안보임. 
-    3. float :left 쓰고 width 100% 그럼 둘 다 보임 4. position absolute 5. display를 inline block, width를 100%이게 완벽 해결
-
-첫번째 자식의 마진이 부모 바깥으로 나간다.-> 부모에 display inline-block width 100%-->
-        <div style="height:20px; margin-top:20px;background:green"></div>
-
         <header>
             <div class="center-align"> <!--가운데 정렬용 div-->
                 <div id="header-top">
@@ -75,25 +68,50 @@
             </div>
         </nav>
         <main>
-            <!--<main>실시간 검색어</main>-->
-            <h3>연합뉴스</h3>
-            <ol>
-                <li>충격) 제로초 지금 목 아파...</li>
-                <li>속보) 방송 종료하고 싶어</li>
-                <li>중대 발표: 다음 강좌 언제 될지 모르겠다</li>
-            </ol>
-            <h3>언론사 목록</h3>
-            <ul>
-                <li><img src="./theKoreaHerald.png" alt="the Korea Herald"/></li>
-                <li><img src="./thekoreatimes.png" alt="the Korea Times"/></li>
-                <li><img src="./이웃집과학자.png" alt="이웃집과학자"/></li>
+            <div id="main-centered" class="center-align">
+            <div>
+                <div id="main-ad"></div>
+                <div id="main-login"></div>
+                <h3>로그인</h3>
 
-            </ul>
-            <h3>로그인</h3>
-            <h3>뉴스</h3>
-            <h3>법률</h3>
-            <h3>쇼핑</h3>
-            <h6>쇼핑</h6>
+            </div>
+            <div>
+                <div id="main-ytn">
+                    <h3>연합뉴스</h3>
+                <ol>
+                    <li>충격) 제로초 지금 목 아파...</li>
+                    <li>속보) 방송 종료하고 싶어</li>
+                    <li>중대 발표: 다음 강좌 언제 될지 모르겠다</li>
+                </ol>
+            </div>
+            <div id="main-newsstand">
+                <h3>언론사 목록</h3>
+                <ul>
+                    <li><img src="./theKoreaHerald.png" alt="the Korea Herald"/></li>
+                    <li><img src="./thekoreatimes.png" alt="the Korea Times"/></li>
+                    <li><img src="./이웃집과학자.png" alt="이웃집과학자"/></li>
+                </div>
+                </ul>
+                <div id="main-weather"></div>
+                <div id="main-second-ad"></div>
+            </div>
+            <div>
+                <div id="main-category">
+                    <h3>주제별 보기</h3>
+                </div> 
+                <div id="main-shopping">
+                    <h3>쇼핑</h3>
+                </div>
+            </div>
+            <div>
+                <div id="main-event">
+                    <h3>이벤트</h3>
+                </div>
+                <div id="main-third-ad"></div>
+            </div>
+            
+            
+            </div>
         </main>
         <footer>
             <div>공지사항</div>
