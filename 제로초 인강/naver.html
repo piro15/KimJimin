@@ -7,6 +7,13 @@
         <link rel="stylesheet" href="./naver.css">
     </head>
     <body>
+        <div style="height:20px; margin-bottom:20px;background:yellow"></div><!--마진 콜랩싱. 좌우 마진은 압겹치는데 상하 마진은 겹친다1. 형제 태그 간에. 2. height없는 빈태그끼리.
+        3. 첫번째 자식이 margin top이 있거나 마지막 자식이 margin bottom 있을 때 해결 방법 1. overflow auto. 근데 스크롤생긴다. 2. overflow hidden. 부모는 보이는데 자식 안보임. 
+    3. float :left 쓰고 width 100% 그럼 둘 다 보임 4. position absolute 5. display를 inline block, width를 100%이게 완벽 해결
+
+첫번째 자식의 마진이 부모 바깥으로 나간다.-> 부모에 display inline-block width 100%-->
+        <div style="height:20px; margin-top:20px;background:green"></div>
+
         <header>
             <div class="center-align"> <!--가운데 정렬용 div-->
                 <div id="header-top">

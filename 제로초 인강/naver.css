@@ -239,8 +239,8 @@ nav li:nth-child(7) span:first-child {
   font-size: 16px;
 }
 
-main h3:nth-child(3) {
-    background:red;
+main {
+    background-color:#f2f4f7;
+    display:inline-block;
+    width:100%;
 }
-/*h3들 중 2번 째 h3라고 생각해서 nth-child(2)하면 안된다. third child of main whose name is h3
-h3에서만 비교하는 건 nth-of-type(2)*/
