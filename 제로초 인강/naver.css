@@ -255,7 +255,8 @@ main {
     width: 740px;
     height: 120px;
     background:#555;
-
+    margin-right:8px;
+    margin-bottom: 8px;
 }
 
 #main-login{
@@ -264,6 +265,8 @@ main {
     height: 120px;
     vertical-align: top;
     background-color:white;
+    margin-bottom: 8px;
+
 }
 
 #main-ytn{
@@ -271,7 +274,8 @@ main {
     width: 740px;
     height: 46px;
     background-color:white;
-
+    margin-right:8px;
+    margin-bottom: 8px;
 }
 
 #main-newsstand{
@@ -279,7 +283,8 @@ main {
     width: 740px;
     height: 246px;
     background-color:white;
-
+    margin-right:8px;
+    margin-bottom: 8px;
 }
 
 #main-weather{
@@ -287,6 +292,7 @@ main {
     width: 332px;
     height: 142px;
     background-color:white;
+    margin-bottom: 8px;
 
 }
 
@@ -295,6 +301,8 @@ main {
     width: 332px;
     height: 150px;
     background:#555;
+    margin-bottom: 8px;
+
 }
 
 
@@ -327,3 +335,13 @@ main {
     height: 130px;
     background-color:#555;
 }
+
+
+/*css inline block 오류 해결 방법 1. 엔터 없애기
+2. float left
+3. margin 음수 값 -4px. 그럼 붙음 근데 브라우저마다 값이 다름
+4. 인라인 블럭을 감싸고 있는 div에 폰트 사이즈를 0으로 준다. 단 그럼 다식들의 폰트도
+다 0이 되기 때문에 자식들에게 폰트 사이즈 지정을 다시 해줘야 한다.
+
+플롯하면 부모가 자식 인지 못함. 부모가 블록 포맷 컨텍스트 형성해야함. overflow auto
+아니면 display inline block && width 100%*/
