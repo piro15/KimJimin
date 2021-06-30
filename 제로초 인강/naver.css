@@ -512,4 +512,73 @@ frame, center, font, marquee 안 쓰는 옛날 태그들*/
 
 /*스크롤바 안생기게 하려면 overflow hidden가 아니라 스크롤바 안 생길 때까지 height 계속 늘려주기도 
 아니라 scrolling no attribute*/
+#main-category-top {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid #ebeef3;
 
+
+}
+#subject-list, #subject-all, #subject-prev, #subject-next {
+float: left;
+    height: 45px;
+    padding: 0;
+}
+
+#subject-list {
+    width: 603px;
+    position: relative;
+}
+#subject-list ul{
+    list-style:none;
+    margin:0;
+    padding: 0;
+}
+
+#subject-list li{
+    float: left;
+}
+#subject-all, #subject-prev, #subject-next {
+    position: relative;/*absolute보면 컨테이닝 블럭 생각. 컨테이닝 블럭 되려면 relative*/
+    width: 45px;
+    border: none;
+    border-left: 1px solid #ebeef3;
+    background: white;
+    
+}
+
+#subject-all span:last-child{
+    position: absolute;
+    top: 15px;
+    left: 12px;
+    width: 20px;
+    height: 14px;
+    background-image:url(./sp_themecast.png);
+ background-repeat: no-repeat;
+    background-position: -218px -257px;
+    
+}
+#subject-prev span:last-child{
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    width: 8px;
+    height: 16px;
+    background-image:url(./sp_themecast.png);
+    background-repeat: no-repeat;
+    background-position: -320px 0;
+   }
+ 
+
+
+#subject-next span:last-child{
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    width: 8px;
+    height: 16px;
+    background-image:url(./sp_themecast.png);
+    background-repeat: no-repeat;
+    background-position: -320px -52px;
+   }
+    
