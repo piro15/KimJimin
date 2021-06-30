@@ -122,6 +122,29 @@ header {
   top: -0.5px;
 }
 
+#search-keyboard {
+background-image:url(https://s.pstatic.net/static/www/img/uit/2019/sp_search.svg);
+background-repeat: no-repeat;
+background-position: -33px -60px;
+width:19px;
+height: 11px;
+display: inline-block;
+margin:0 6px; /*상우 하좌 반복이면 한 번만 쓴다. 세 개면 상 우좌 하*/
+vertical-align: middle;
+}
+
+#search-history {
+    background-image:url(https://s.pstatic.net/static/www/img/uit/2019/sp_search.svg);
+background-repeat: no-repeat;
+background-position: -87px -60px;
+width 9px;
+height: 4px;
+display: inline-block;
+margin:0 6px;
+vertical-align: middle;
+
+}
+
 #search-image {
   background-image: url(./sp_search.png);
   background-position: -2px -59px;
@@ -191,6 +214,11 @@ nav li:nth-child(6) span:first-child {
   background-position: -70px -285px;
 }
 
+nav li:nth-child(7) span:first-child {
+    width: 30px;
+    background-position: -70px -285px;
+  }
+
 .nav-divider {
   display: inline-block;
   margin: 18px 16px 0;
@@ -210,3 +238,9 @@ nav li:nth-child(6) span:first-child {
   color: #00ab33;
   font-size: 16px;
 }
+
+main h3:nth-child(3) {
+    background:red;
+}
+/*h3들 중 2번 째 h3라고 생각해서 nth-child(2)하면 안된다. third child of main whose name is h3
+h3에서만 비교하는 건 nth-of-type(2)*/
