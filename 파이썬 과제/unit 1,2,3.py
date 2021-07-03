@@ -13,4 +13,21 @@ Hello,world
 >>> 
 ====== RESTART: /Users/kimjimin/피로그래밍/KimJimin/파이썬 과제/hello.py =====
 Hello world!
+>>> print('Hello, world!')
+Hello, world!
+>>> print('Python Programming')
+Python Programming
+>>> print('Hello, world!')
+print('Hello, world!')
+Hello, world!
+>>> print('Hello, world!')print('Python Programming')
+SyntaxError: invalid syntax
+>>> print('Hello, world!') print('Python Programming')
+SyntaxError: invalid syntax
+>>> print('Hello, world!') print('Python Programming')
+SyntaxError: invalid syntax
+>>> 
+====== RESTART: /Users/kimjimin/피로그래밍/KimJimin/파이썬 과제/hello.py =====
+Hello world!
+Python Programming
 >>> 
