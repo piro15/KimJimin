@@ -1,4 +1,2 @@
-s='''Python is a programming language that lets you work quickly
-and
-integrate systems more effectively.'''
-print(s)
+a=list(range(5,-10,-2))
+print(a)
