@@ -1,9 +1,9 @@
-year = 2000
-month = 10
-day = 27
-hour = 11
-minute = 43
-second = 59
+import sys
+print(sys.getrefcount(1000))
+x=1000
+print(sys.getrefcount(1000))
+y=1000
+print(sys.getrefcount(1000))
 
-print(year, month, day, sep='/', end=' ')
-print(hour, minute, second, sep=':')
+print(x is y)# If you want to print 'x is y', you should write codes like "print('x is y')
+
