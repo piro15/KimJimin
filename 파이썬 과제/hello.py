@@ -1,1 +1,13 @@
-print(int(0.2467*12+4.159))
+a=input('첫 번째 숫자를 입력하세요: ')
+b=input('두 번째 숫자를 입력하세요: ')
+
+print(a+b)
+
+a=int(input('첫 번째 숫자를 입력하세요: '))
+b=int(input('두 번째 숫자를 입력하세요: '))
+
+print(a+b)
+
+a=float(input('첫 번째 숫자를 입력하세요: '))
+b=float(input('두 번째 숫자를 입력하세요: '))
+print(a+b)
