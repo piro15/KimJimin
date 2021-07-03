@@ -1,7 +1,4 @@
-# 3. 다음 중 문자열 안에 '(작은따옴표)나 "(큰따옴표)를 넣는 방법으로 올바른 것을 모두 고르세요.
-
-# 'Hello, \'Python\'' -> 이스케이프 문자 사용(정답)
-# 'Hello, 'Python''  -> ''안에 '넣지 말기
-# "Hello, 'Python'"  -> ""안에는 '넣기 가능(정답)
-# """"Hello", Python"""->""" """ 안에는 " 넣기 가능(정답)
-# ""Hello", Python"    -> "" 안에는 "넣지 말기
+s='''Python is a programming language that lets you work quickly
+and
+integrate systems more effectively.'''
+print(s)
