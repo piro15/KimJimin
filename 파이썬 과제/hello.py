@@ -1,7 +1,7 @@
-a=int(input())
-b=input()
-if b=='Cash3000':
-    a-=3000
-    if b=='Cash5000':
-        a-=5000
-print(a)
+x = 5
+ 
+if x == 10:
+    print('10입니다.') 
+else:
+    print('x에 들어있는 숫자는')    
+    print('10이 아닙니다.')
