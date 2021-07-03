@@ -1,6 +1,11 @@
-korean=92
-english=47
-mathematics=86
-science=81
-
-print(korean>=50 and english>=50 and mathematics>=50 and science>=50)
+single_quote = '''"안녕하세요."
+'파이썬'입니다.'''
+ 
+double_quote1 = """"Hello"
+'Python'"""
+ 
+double_quote2 = """Hello, 'Python'"""  
+ 
+print(single_quote)
+print(double_quote1)
+print(double_quote2)
