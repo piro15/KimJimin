@@ -1,2 +1,2 @@
-a,b,c=map(int,input().split())
-print(a+b+c)
+a,b,c,d=map(int,input().split())
+print((a+b+c+d)//4)
