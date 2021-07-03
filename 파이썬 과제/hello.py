@@ -1,11 +1,3 @@
-#Hello, world! 출력
-print('Hello world!')
 
-#print('Hello, world!')
-
-a=1+2 #더하기
-print('Hello, world!') #printf('1234567890')
-
-# 더하기
-# a=1+2
-# print('Hello, world!')
+if a==10:
+    print('10입니다.') #공백 2칸, 공백 4칸, 공백 4칸이 규정.
