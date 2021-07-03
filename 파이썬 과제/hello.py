@@ -1,9 +1,6 @@
-import sys
-print(sys.getrefcount(1000))
-x=1000
-print(sys.getrefcount(1000))
-y=1000
-print(sys.getrefcount(1000))
+korean=92
+english=47
+mathematics=86
+science=81
 
-print(x is y)# If you want to print 'x is y', you should write codes like "print('x is y')
-
+print(korean>=50 and english>=50 and mathematics>=50 and science>=50)
