@@ -11,3 +11,6 @@ NameError: name 'Hello' is not defined
 >>> print('Hello,world')
 Hello,world
 >>> 
+====== RESTART: /Users/kimjimin/피로그래밍/KimJimin/파이썬 과제/hello.py =====
+Hello world!
+>>> 
