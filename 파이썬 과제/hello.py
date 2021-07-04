@@ -1,7 +1,9 @@
-i=2
-j=5
-
-while i<=32 or j>=1:
-    print(i,j)
-    i*=2
-    j-=1
+i=0
+while True:
+    if i%10 !=3 :
+        i+=1
+        continue
+    if i>73:
+        break
+    print(i, end=' ')
+    i+=1
