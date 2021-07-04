@@ -1,4 +1,4 @@
-count = int(input('반복할 횟수를 입력하세요: '))
- 
-for i in range(count):
-    print('Hello, world!', i)
+x = [49, -17, 25, 102, 8, 62, 21]
+
+for i in x:
+    print(i*10,end=' ')
