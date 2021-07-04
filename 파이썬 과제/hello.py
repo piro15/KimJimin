@@ -1,6 +1,7 @@
-import random
+i=2
+j=5
 
-i=0
-while i !=3:
-    i=random.randint(1,6)
-    print(i)
+while i<=32 or j>=1:
+    print(i,j)
+    i*=2
+    j-=1
