@@ -28,25 +28,25 @@
         </button>
             
         <a class="navbar-brand text-light" href="#">Pirogramming15</a>
-
-        <span class="navbar-text text-info">
+        
+        <span class="navbar-text text-info mr-4 ml-3">
             Kim Jimin
         </span>
 
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
 
-            <ul class="navbar-nav mr-auto ">
+            <ul class="navbar-nav mr-auto ml-4">
                 <li class="nav-item active">
-                    <a class="nav-link text-light" href="#">Intro <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-light" href="#intro">Intro <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-secondary" href="#">Highlights</a>
+                    <a class="nav-link text-secondary" href="#highlights">Highlights</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-secondary" href="#">Gallery</a>
+                    <a class="nav-link text-secondary" href="#gallery">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-secondary" href="#">Contact</a>
+                    <a class="nav-link text-secondary" href="#contact">Contact</a>
                 </li>
             </ul>
             <button class=" text-info border-info btn btn-outline-success my-2 my-sm-2" type="submit">About</button>
@@ -55,22 +55,34 @@
         </div>
         
     </nav>
-
-    <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    
+    <div id="intro" class=" text-center  bg-white ">
+        <h2 class="mt-5">Pirogramming15</h2>
+        <h5>Cheer up</h5>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-      </div>
+        <a class="btn btn-primary btn-sm mb-5" href="#highlights" role="button">Get Started</a>
+    </div>
 
-      <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-      </div>
+    <div id="highlights" class=" text-center bg-secondary">
+        <h3 class=" text-danger font-weight-bold ">Built On The Bootstrap Grid</h3>
+        <p class="text-white">Bootstrap's responsive grid comes in 4 sizes or "breakpoints": tiny(xs)<br/>,(sm), medium(md) and large(lg). These 4 grid sizes enable you create<br/> responsive layouts that behave accordingly on different divices.</p>
+        <a class="btn btn-primary btn-sm" href="#" role="button">Learn more</a>
+    </div>
+
+    <div id="gallery" class="bg-dark ">
+        <h3 class="text-primary">Flexible Layouts</h3>
+        <div class="d-flex justify-content-around">
+        <div class="row">
+            <div class="col col-md-4 "><img src=""><h3></h3><h6></h6></div>
+            <div class="col col-md-4 "><img><h3></h3><h6></h6></div>
+            <div class="col col-md-4 "><img><h3></h3><h6></h6></div>
+        </div>
+        <div class="row ">
+            <div class="col col-md-4 col-6 "><img src="https://picsum.photos/seed/picsum1/300/300"><img src="https://picsum.photos/seed/picsum2/300/300"><img src="https://picsum.photos/seed/picsum3/300/300"></div>
+            <div class="col col-md-4 col-6"><img src="https://picsum.photos/seed/picsum3/300/300"><img src="https://picsum.photos/seed/picsum5/300/300"><img src="https://picsum.photos/seed/picsum6/300/300"></div>     
+            <div class="col col-md-4 col-6"><img src="https://picsum.photos/seed/picsum7/300/300"><img src="https://picsum.photos/seed/picsum8/300/300"><img src="https://picsum.photos/seed/picsum9/300/300"></div>        
+        </div>
+        </div>
 <!-- 
     > : 자식 태그
     * : 여러 개 한 번에 만들기
