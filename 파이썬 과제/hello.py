@@ -1,8 +1,8 @@
-x=30
+x=int(input())
 
-if x==10:
-    print('10입니다.')
-elif x==20:
-    print('20입입니다.')
+if 11<=x<=20:
+    print('11~20')
+elif 21<=x<=30:
+    print('21~30')
 else:
-    print('10도 20도 아닙니다.')
+    print('아무것도 해당하지 않음')
