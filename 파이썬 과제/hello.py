@@ -1,7 +1,8 @@
-written_test = 75
-coding_test = True
- 
-if written_test >= 80 and coding_test == True:
-    print('합격')
+x=30
+
+if x==10:
+    print('10입니다.')
+elif x==20:
+    print('20입입니다.')
 else:
-    print('불합격')
+    print('10도 20도 아닙니다.')
