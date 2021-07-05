@@ -26,7 +26,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand text-light" href="#">Pirogramming15</a>
+        <a class="navbar-brand" href="#">Pirogramming15</a>
         <span class="navbar-text text-info mr-4 ml-3">
             Kim Jimin
         </span>
@@ -45,7 +45,7 @@
                     <a class="nav-link text-secondary" href="#contact">Contact</a>
                 </li>
             </ul>
-            <button class=" text-info border-info btn btn-outline-success my-2 my-sm-2" type="submit">About</button>
+            <button type="button" class=" text-info border-info btn btn-outline-success my-2 my-sm-2" data-toggle="modal" data-target="#about">About</button>
         </div>
     </nav>
     
@@ -68,58 +68,94 @@
         </div>
     </div>
 
-    <div id="gallery" class="bg-dark">
-        <div>
-            <h3 class="text-primary text-center justify-content-around">Flexible Layouts</h3>
-            <div class="row text-center d-flex justify-content-center">
-                <div class="col col-md-3 col-3 text-white"><i class="fas fa-desktop fa-5x"></i><h3>Responsive</h3><h6 class="font-weight-light">Your site looks good everywhere</h6></div>
-                <div class="col col-md-3 col-3 text-white"><i class="fab fa-sass fa-5x"></i><h3>Customizable</h3><h6 class="font-weight-light">Easy to theme and customize with SASS</h6></div>
-                <div class="col col-md-3 col-3 text-white"><i class="far fa-star fa-5x"></i><h3>Consistent</h3><h6 class="font-weight-light">A mature, well-tested, stable codebase</h6></div>
+    <div id="gallery" class="bg-dark py-5">
+            <h3 class="text-primary text-center">Flexible Layouts</h3>
+            <div class="row text-center d-flex justify-content-center py-5">
+                <div class="col col-md-3 col-12 mb-3 text-white"><i class="fas fa-desktop fa-5x"></i><h3>Responsive</h3><h6 class="font-weight-light">Your site looks good everywhere</h6></div>
+                <div class="col col-md-3 col-12 mb-3 text-white"><i class="fab fa-sass fa-5x"></i><h3>Customizable</h3><h6 class="font-weight-light">Easy to theme and customize with SASS</h6></div>
+                <div class="col col-md-3 col-12 mb-3 text-white"><i class="far fa-star fa-5x"></i><h3>Consistent</h3><h6 class="font-weight-light">A mature, well-tested, stable codebase</h6></div>
             </div>
-            <div class="row  text-center ">
-                <div class="col col-lg-4 col-md-6 "><img src="https://picsum.photos/seed/picsum1/300/300"><img src="https://picsum.photos/seed/picsum2/300/300"></div>
-                <div class="col col-lg-4 col-md-6 "><img src="https://picsum.photos/seed/picsum3/300/300"><img src="https://picsum.photos/seed/picsum5/300/300"></div>     
-                <div class="col col-lg-4 col-md-6 "><img src="https://picsum.photos/seed/picsum7/300/300"><img src="https://picsum.photos/seed/picsum8/300/300"></div>        
+            <div class="row text-center d-flex justify-content-center py-5 px-5">
+                <div class="col col-lg-4 col-md-6 col-12 "><img src="https://picsum.photos/seed/picsum1/300/300"></div>
+                <div class="col col-lg-4 col-md-6 col-12 "><img src="https://picsum.photos/seed/picsum2/300/300"></div>
+                <div class="col col-lg-4 col-md-6 col-12 "><img src="https://picsum.photos/seed/picsum3/300/300"></div>
+                <div class="col col-lg-4 col-md-6 col-12 "><img src="https://picsum.photos/seed/picsum5/300/300"></div>
+                <div class="col col-lg-4 col-md-6 col-12 "><img src="https://picsum.photos/seed/picsum7/300/300"></div>
+                <div class="col col-lg-4 col-md-6 col-12 "><img src="https://picsum.photos/seed/picsum8/300/300"></div>
             </div>
-        </div>
     </div>
     
-    <div id="contact" class="bg-secondary">
-        <div>
-            <h3 class="text-primary text-center justify-content-around">Get In Touch</h3>
-            <hr>
-            <p class="text-center text-white">We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
-            <div class="row text-center d-flex justify-content-center">
-                <input type="text" class="form-control col col-md-3 m-3" placeholder="Name">
-                <input type="email" class="form-control col col-md-3 m-3" id="exampleFormControlInput1" placeholder="Email">
-                <input type="phone" class="col col-md-3 form-control m-3" placeholder="Phone">
-            </div>
-            <input type="message" class="col col-md-3 form-control" placeholder="Your message here..">            
+    <div id="contact" class="bg-secondary ">
+        <h3 class="text-primary text-center pt-5">Get In Touch</h3>
+        <hr>
+        <p class="text-center text-white">We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
+        <div class="row text-center d-flex justify-content-center">
+            <input type="text" class="form-control col-10 col-lg-3 m-3" placeholder="Name">
+            <input type="email" class="form-control col-10 col-lg-3 my-3 mx-5" placeholder="Email">
+            <input type="phone" class="form-control col-10 col-lg-3 m-3" placeholder="Phone">
+            <textarea type="text" class="form-control col-10 my-3 mx-5" rows="9" placeholder="Your message here.."></textarea>
         </div>
+        <div class="d-flex justify-content-center pb-5"><button type="button" class="btn btn-primary col-2 m-3" data-toggle="modal" data-target="#modal2">Send</button></div>
     </div>
     
-    <div class="bg-dark">
-        <div class="col">
-            <div class="row"></div>
-            <div class="row"></div>
-            <div class="row"></div>
-            <div class="row"></div>
-            <div class="row"></div>
+    <div class="bg-dark py-5">
+        <div class="row d-flex justify-content-around">
+            <div class="col col-12 col-sm-5 col-md-3 pl-5 ml-5 mt-5">
+                <h4 class="row text-info">Information</h4>
+                <h6 class="row text-white font-weight-light">Products</h6>
+                <h6 class="row text-white font-weight-light">Services</h6>
+                <h6 class="row text-white font-weight-light">Benefits</h6>
+                <h6 class="row text-white font-weight-light">Developers</h6>
+            </div>
+            <div class="col col-12 col-sm-5 col-md-3 pl-5 ml-5 mt-5">
+                <h4 class="row text-info ">About</h4>
+                <h6 class="row text-white font-weight-light">Contact Us</h6>
+                <h6 class="row text-white font-weight-light">Delivery Information</h6>
+                <h6 class="row text-white font-weight-light">Privacy Policy</h6>
+                <h6 class="row text-white font-weight-light">Terms & Conditions</h6>
+            </div>
+            <div class="col col-md-10 col-lg-3 m-3 mt-5">
+                <h4 class="text-info">Stay Posted</h4>
+                <input type="email" class="form-control col col-md-12 my-3" placeholder="Tell us your email">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">Subscribe for updates</button>
+            </div>
         </div>
-        <div class="col">
-            <div class="row"></div>
-            <div class="row"></div>
-            <div class="row"></div>
-            <div class="row"></div>
-            <div class="row"></div>
-        </div>
-        <div class="col">
-            <div class="row"></div>
-            <div class="row"></div>
-            <div class="row"></div>
+        <div class="py-5">
+            <h6 class="text-secondary font-weight-light text-left pl-5">Bootstrap ©2021 Pirogramming15</h6>
         </div>
     </div>
 
+    <div class="modal fade" id="about">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <!--scripts loaded here -->
     <script src="./js/bootstrap.bundle.js"></script>
