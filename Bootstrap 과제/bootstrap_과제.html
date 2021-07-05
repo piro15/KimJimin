@@ -18,34 +18,43 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/bootstrap.min.css.map" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <style>
+        #hover-adj:hover .hover-adj-content{
+            color:white;
+        }
 
-
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body >
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg sticky-top">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg sticky-top ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">Pirogramming15</a>
         <span class="navbar-text text-info mr-4 ml-3">
             Kim Jimin
         </span>
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <div class="collapse navbar-collapse " id="navbar-content">
             <ul class="navbar-nav mr-auto ml-4">
-                <li class="nav-item active">
-                    <a class="nav-link text-light" href="#intro">Intro</a>
+                <li id="hover-adj" class="nav-item active">
+                    <a class="nav-link text-light mt-2" href="#intro"><h6 class="hover-adj-content">Intro</h6></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-secondary" href="#highlights">Highlights</a>
+                <li id="hover-adj" class="nav-item">
+                    <a  class="nav-link text-secondary mt-2" href="#highlights"><h6 class="hover-adj-content">Highlights</h6></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-secondary" href="#gallery">Gallery</a>
+                <li id="hover-adj" class="nav-item">
+                    <a  class="nav-link text-secondary mt-2" href="#gallery"><h6 class="hover-adj-content">Gallery</h6></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-secondary" href="#contact">Contact</a>
+                <li id="hover-adj" class="nav-item">
+                    <a class="nav-link text-secondary mt-2" href="#contact"><h6 class="hover-adj-content">Contact</h6></a>
                 </li>
             </ul>
-            <button type="button" class=" text-info border-info btn btn-outline-success my-2 my-sm-2" data-toggle="modal" data-target="#about">About</button>
+            <button id="hover-adj" type="button" class=" text-info border-info btn btn-outline-success  my-sm-2 " data-toggle="modal" data-target="#about"><h6 class="hover-adj-content mt-2">About</h6></button>
         </div>
     </nav>
     
@@ -54,7 +63,7 @@
     <div id="intro" class="text-center bg-white vh-100 d-flex justify-content-center align-items-center">
         <div>
             <h2>Pirogramming15</h2>
-            <h5 >Cheer up</h5>
+            <h5>Cheer up</h5>
             <hr>
             <a class="btn btn-primary btn-sm mb-5" href="#highlights" role="button">Get Started</a>
         </div>
@@ -85,17 +94,17 @@
             </div>
     </div>
     
-    <div id="contact" class="bg-secondary ">
+    <div id="contact" class="bg-secondary">
         <h3 class="text-primary text-center pt-5">Get In Touch</h3>
         <hr>
         <p class="text-center text-white">We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
-        <div class="row text-center d-flex justify-content-center">
-            <input type="text" class="form-control col-10 col-lg-3 m-3" placeholder="Name">
-            <input type="email" class="form-control col-10 col-lg-3 my-3 mx-5" placeholder="Email">
-            <input type="phone" class="form-control col-10 col-lg-3 m-3" placeholder="Phone">
-            <textarea type="text" class="form-control col-10 my-3 mx-5" rows="9" placeholder="Your message here.."></textarea>
+        <div class="row text-center d-flex justify-content-center ">
+            <div class="col col-md-3 col-9 my-3"><input type="text" class="form-control" placeholder="Name"></div>
+            <div class="col col-md-3 col-9 mx-4 my-3"><input type="email" class="form-control" placeholder="Email"></div>
+            <div class="col col-md-3 col-9 my-3"><input type="phone" class="form-control" placeholder="Phone"></div>
         </div>
-        <div class="d-flex justify-content-center pb-5"><button type="button" class="btn btn-primary col-2 m-3" data-toggle="modal" data-target="#modal2">Send</button></div>
+        <div class="row d-flex justify-content-center mx-5 my-3"><textarea type="text" class="form-control col-11" rows="9" placeholder="Your message here.."></textarea></div>
+        <div class="pb-5 d-flex justify-content-center"><button type="button" class="btn btn-primary col-2 m-3" data-toggle="modal" data-target="#modal2">Send</button></div>
     </div>
     
     <div class="bg-dark py-5">
@@ -141,7 +150,7 @@
         </div>
     </div>
     <div class="modal fade mx-auto" id="modal2">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-body">
                     <h3 class="text-center">Nice Job!</h3>
@@ -167,5 +176,6 @@
     <script src="./js/bootstrap.min.js.map"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    
 </body>
 </html>
