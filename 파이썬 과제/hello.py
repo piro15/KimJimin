@@ -1,7 +1,4 @@
-try:
-    file =open('maria.txt','r')
-except FileNotFOundError:
-    print('파일이 없습니다.')
-else:
-    s=file.read()
-    file.close()
+import person
+
+maria=person.Person('마리아', 20, '서초구')
+maria.greeting()
