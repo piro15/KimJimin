@@ -1,5 +1,7 @@
-class Date:
-    @staticmethod
-    def is_date_valid(date_string):
-        year,month,day=map(int,date_string.split('-'))
-        return month <=12 and day <=31
+try:
+    file =open('maria.txt','r')
+except FileNotFOundError:
+    print('파일이 없습니다.')
+else:
+    s=file.read()
+    file.close()
