@@ -1,8 +1,5 @@
-class Knight:
-    def __init__(self, health,mana,armor):
-        self.health = health
-        self.mana = mana
-        self.armor = armor
-
-    def slash(self):
-        print('베기')
+class Date:
+    @staticmethod
+    def is_date_valid(date_string):
+        year,month,day=map(int,date_string.split('-'))
+        return month <=12 and day <=31
