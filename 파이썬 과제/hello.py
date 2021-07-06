@@ -1,9 +1,8 @@
-for i in range(1,101):
-    if i%22==0:
-        print('FizzBuzz')
-    elif i%2==0:
-        print('Fizz')
-    elif i%11==0:
-        print('Buzz')
-    else:
-        print(i)
+class Knight:
+    def __init__(self, health,mana,armor):
+        self.health = health
+        self.mana = mana
+        self.armor = armor
+
+    def slash(self):
+        print('베기')
