@@ -1,6 +1,5 @@
 num=0
 a=0
-winner=0
 try:
     while 1:
         while a==0:
@@ -32,15 +31,11 @@ try:
                             num+=1
                             print('playerB:',num)
                             if num==31:
-                                winner=1
-                                raise GameOver
+                                raise Exception
                         n=0
                         a=1
                 except ValueError:
                     print('정수를 입력하세요.')
         a=0
 except Exception:
-    if winner==0:
-        print('playerB win!')
-    else:
-        print('playerA win!')
+    print()
