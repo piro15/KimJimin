@@ -1,11 +1,13 @@
 def Menu1(name,mid,final) :
-    student_dic[str(name)]=[int(mid),int(final)]
-
+    student_dic[str(name)]=[int(mid),int(final)]#Invalid Syntax 나오면 괄호 매칭 확인
+    #unsupported operand 에러 나오면 int(), str() 씌우기
+    #setdefault, update 말고 그냥 한 줄로 바로 쓰기.
+    
 def Menu2() :
-    for key in student_dic:
+    for key in student_dic:#ㅏ.items는 key, vlaue 다 쓸 때. key 만 쓸 때는 .items빼고
         avg=(student_dic[key][0]+student_dic[key][1])/2
-        if avg>=90:
-            student_dic[key]=(student_dic[key][0],student_dic[key][1],'A')
+        if avg>=90:#겹치는 코드는 변수 설정해서 깔끔하게
+            student_dic[key]=(student_dic[key][0],student_dic[key][1],'A')#.update로 했더니 런타임 오류-> 복사해 둘 다른 변수 생성하거나 다른 방식으로 코드 짜기.
             
         elif avg>=80:
             student_dic[key]=(student_dic[key][0],student_dic[key][1],'B')
@@ -21,7 +23,7 @@ def Menu3() :
     print('name  mid  final  grade')
     print('-----------------------')
     strFormat='%-6s%-5s%-7s%-6s'
-    s= strFormat % ('sep1','sep2','sep3','sept4')
+    s= strFormat % ('sep1','sep2','sep3','sept4')#ljust(),center(),rjust()는 전체 줄에서 정렬..{0: >10}얘도 있다.
     
     for key in student_dic:
         s= strFormat %(key,student_dic[key][0],student_dic[key][1],student_dic[key][2])
@@ -30,7 +32,7 @@ def Menu3() :
 def Menu4(delete):
     del student_dic[delete]
 
-student_dic={}
+student_dic={}#리스트, 튜플, 딕셔너리 중에 튜플은 읽기 전용이니까 제외. 이름 찾고 삭제하기 쉬운 건 딕셔너리!
 
 print("*Menu*******************************")
 print("1. Inserting students Info(name score1 score2)")
@@ -50,7 +52,7 @@ while True :
                 print('Already exist name!')
             elif int(student[1])<=0 or int(student[2])<=0 :
                 raise ValueError
-            elif not student[1].isdecimal or not student[2].isdecimal :
+            elif not student[1].isdecimal or not student[2].isdecimal :#isdecimal,isnumeric!!
                 raise ValueError
             else:
                 Menu1(student[0],student[1],student[2])
@@ -72,7 +74,7 @@ while True :
                 if student_dic[key][2]== None:
                     raise IndexError
         except IndexError:
-            print("There is a student who didn't get grade.")
+            print("There is a student who didn't get grade.")#겹쳐서 꼬일 때는 try except로 예외처리만 뺴내는 게 깔끔.
         except Exception:
             print('No student data!')
         else:
