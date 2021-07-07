@@ -1,6 +1,5 @@
 num=0
 a=0
-go_on=1
 try:
     while 1:
         while a==0:
