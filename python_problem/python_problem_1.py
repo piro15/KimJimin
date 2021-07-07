@@ -13,7 +13,7 @@ try:
                             num+=1
                             print('playerA:',num)
                             if num==31:
-                                raise Exception
+                                raise Exception('playerB')
                         n=0
                         a=1
                 except ValueError:
@@ -31,11 +31,11 @@ try:
                             num+=1
                             print('playerB:',num)
                             if num==31:
-                                raise Exception
+                                raise Exception('playerA')
                         n=0
                         a=1
                 except ValueError:
                     print('정수를 입력하세요.')
         a=0
-except Exception:
-    print()
+except Exception as result:
+    print(result,'win!')
