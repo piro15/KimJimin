@@ -1,3 +1,4 @@
+import random
 num=0
 
 def brGame(self,opponent):
@@ -23,8 +24,15 @@ def brGame(self,opponent):
     
 try:
     while 1:
-        brGame('playerA','playerB')
-        brGame('playerB','playerA')
+        n=random.randint(1,3)
+        for i in range(n) :
+            num+=1
+            print('computer: ',num,sep='')
+            if num==31:
+                raise Exception('player')
+        n=0
+        brGame('player','computer')
         
 except Exception as result:
     print(result,'win!')
+
