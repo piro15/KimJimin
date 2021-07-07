@@ -14,7 +14,6 @@ try:
                             num+=1
                             print('playerA:',num)
                             if num==31:
-                                winner=1
                                 raise Exception
                         n=0
                         a=1
@@ -33,7 +32,7 @@ try:
                             num+=1
                             print('playerB:',num)
                             if num==31:
-                                winner=2
+                                winner=1
                                 raise GameOver
                         n=0
                         a=1
@@ -41,7 +40,7 @@ try:
                     print('정수를 입력하세요.')
         a=0
 except Exception:
-    if winner==1:
+    if winner==0:
         print('playerB win!')
     else:
         print('playerA win!')
