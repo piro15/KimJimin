@@ -7,6 +7,9 @@ while a==0:
             if n!=1 and n!=2 and n!=3 :
                 print('1,2,3 중 하나를 입력하세요')
             else:
+                for i in range(n) :
+                    num+=1
+                    print('playerA:',num)
                 n=0
                 a=1
         except ValueError:
