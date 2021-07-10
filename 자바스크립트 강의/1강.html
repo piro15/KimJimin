@@ -59,8 +59,8 @@
 
 <script>
   
-  function playSound(e) {
-    const audio =document.querySelector(`audio[data-key="${e.keyCode}"]`) //여러 개일 때는 All 붙이기
+  function playSound(e) {//function으로 묶어서 깔끔하게 밖으로 꺼내오고 밑에서는 한 단어, 한 줄로 작성하기
+    const audio =document.querySelector(`audio[data-key="${e.keyCode}"]`) //여러 개일 때는 All 붙이기//오류 나면 ""썼는지 확인
     const key=document.querySelector(`.key[data-key="${e.keyCode}"]`);//클래스니까.key
     if(!audio) return; // stop the function from running all together
     audio.currentTime = 0;//rewind to the start
@@ -74,8 +74,9 @@
     if(e.propertyName !== 'transform') return;//skip if it's not a transform
     // console.log(e.propertyName);
     this.classList.remove('playing');
-
   }
+  //playing 클래스 삭제할 때 쓸 각각의 함수
+
   const keys = document.querySelectorAll('.key');
   keys.forEach(key => key.addEventListener('transitionend',removeTransition))
   window.addEventListener('keydown',playSound);
