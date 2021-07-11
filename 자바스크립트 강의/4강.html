@@ -37,29 +37,100 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    // const fifteen =inventors.filter(function(inventor){
+    //   if(inventor.year>=1500&&inventor.year<1600){
+    //     return true;//keep it
+    //   }
+    // });//자바스크립트 ; 쓰는 거 까먹지 말기
+
+
+    const fifteen =inventors.filter(inventor =>(inventor.year >= 1500 && inventor.year <1600))
+    // console.log(fifteen);
+    console.table(fifteen);//log 말고 table로 하면 표가 나온다
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const fullNames=inventors.map(inventor=>`${inventor.first} ${inventor.last}`);//inventor.first+' '+inventor.last
+    //inventor를 갖고 => 뒤에 있는 것을 반환. 이 과정 자체가 함수. 이때 map은 모든 배열 값에 이 함수를 실행하는 메소드. inventor라는 배열 속 모든 값에 이 함수를 적용해 => 뒤 결과처럼 나오게 새로운 배열을 만든다.
+    console.log(fullNames);
 
     // Array.prototype.sort()
-    // 3. Sort the inventors by birthdate, oldest to youngest
+    // 3. Sort the inventors by birthdate, oldest to youngest 출생연도로 구별하면 오름차순
+    // const ordered = inventors.sort(function(a,b){ //그냥 sort면 문자열로 변환&유니코드 코드 포인트 순서로 정렬.근데 이렇게 function이 있으면 함수 반환값에 따라 정렬.
+    //   if(a.year>b.year){
+    //     return 1;    //a,b 순서로 들어왔는데 양수 반환이면 b다음 a로 순서 바꾸는,
+    //   }else {
+    //     return -1; //a,b 순서로 들어왔는데 음수 반환이면 a,b 순서 그대로 유지.
+    //   }
+    // })// 나중에 더 검색할 때 '자바스크립트 sort'object정렬 검색
+    const ordered=inventors.sort((a,b)=> a.year > b.year ? 1 : -1); //화살표 함수가 훨씬 간결하다
+    console.table(ordered);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    // var totalYears =0;
 
+    // for (var i=0; i <inventors.length; i++) {
+    //   totalYears += inventors[i].year
+    // }
+
+    // console.log(totalYears);
+
+    const totalYears = inventors.reduce((total, inventor) => {//배열.reduce((누적값,현잿값,인덱스,요소)=>{return 결과},초깃값);//reduce는 sort, every, some 등을 다 이걸로 구현가능. 과제 다 하고 예제 찾아 읽기
+      return total +(inventor.passed-inventor.year);
+    },0); 
+
+    console.log(totalYears);
     // 5. Sort the inventors by years lived
+    const oldest = inventors.sort(function(a,b){
+      const lastGuy = a.passed - a.year;
+      const nextGuy = b. passed -b.year;
+      return lastGuy > nextGuy ? -1 : 1; 
+      // if(lastGuy > nextGuy){
+      //   return -1; //여기서도 a,b 순서로 들어왔는데 음수 반환이면 그대로 a,b. 나이 많은 순 정렬이니까!
+      // } else {
+      //   return 1;// 양수 반환이면 b,a 순으로 재정렬. 더 나이 많은 nextGuy를 앞으로!
+      // }
+    });
+    console.table(oldest)
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+  // const category = document.querySelector('.mw-category');
+  // const links = Array.from(category.querySelectorAll('a'));//꼭 document 아니여도 된다. 전체element 보고 싶은 거라면 사용 가능. 이렇게 두 줄로 안 쓰고 윗 줄에서 '.mw-category a'라고 써도 된다.
+  //   //Array.from() 씌우면 ()안에 있는 것들을 갖고 배열 만들기. 아니면 [...~~] 스프레드?
+  // // const de = links.map(link => link.textContent);//link를 갖고 link.textContent를 반환
+  // const de=links
+  //           .map(link => link.textContent)
+  //           .filter(streetName => streetName.includes('de')); //얘네는 위키피디아 콘솔창에
 
-    // 7. sort Exercise
+  
+  // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const alpha = people.sort((lastOne,nextOne)=>{
+      const [aLast, aFirst] =lastOne.split(', ');//put lastOne into aLast and aFirst, respectively, separating them with ', '
+      const [bLast, bFirst] =nextOne.split(', ');
+      // console.log(last, first);
+      return aLast > bLast ? 1 : -1;
+    });
+    console.log(alpha);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const transportation = data.reduce(function(obj,item){//배열.reduce(누적값, 현재값){return 결과},초기값
+      // console.log(item);
+      if(!obj[item]){//obj[item]이 없으면 만들어서 값 0으로 설정
+        obj[item] = 0;
+      }
+      obj[item]++;//있으면 값 +1
+      return obj;
+    },{});//초기 상태는 blank
+
+    console.log(transportation);
   </script>
 </body>
 </html>
