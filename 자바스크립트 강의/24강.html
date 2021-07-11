@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Sticky Nav</title>
-  <link rel="stylesheet" href="style-START.css">
+  <link rel="stylesheet" href="24강.css">
 </head>
 <body>
 
@@ -54,7 +54,22 @@
   </div>
 
 <script>
+  const nav = document.querySelector('#main');
+  const topOfNav = nav.offsetTop; //nav 시작 지점의 픽셀값
+  function fixNav(){
+    // console.log(topOfNav, window.scrollY);//topOfNav값이랑 화면 스크롤한 만큼의 값 출력
+    if(window.scrollY >= topOfNav) {//이상하게 안되면 첫 번째로 오타 찾기
+      document.body.style.paddingTop = nav.offsetHeight + 'px';//스크롤하고 있을 땐 패딩.(nav높이 만큼)
+      document.body.classList.add('fixed-nav');//fixed-nav 원래 있는 클래스 아니라서 css로 가 추가해줘야 한다.
+    }else{
+      document.body.style.paddingTop = 0;//아닐 땐 패딩 0
+      document.body.classList.remove('fixed-nav');
 
+    }
+
+  }
+
+  window.addEventListener('scroll',fixNav);
 </script>
 
 </body>
