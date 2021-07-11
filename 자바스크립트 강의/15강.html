@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>LocalStorage</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="15강.css">
 </head>
 <body>
   <!--
@@ -24,11 +24,98 @@
       <input type="submit" value="+ Add Item">
     </form>
   </div>
+<!--addEventListener 이벤트 종류
+  ***MDN에 다 써 있다.
+change:폼 필드 상태가 변경됐을 때 
+input: input, textarea 요소 값이 변경 됐을 때
+submit: 버튼키 이용해 폼 제출할 때////이게 이번 강의에 쓰인 것
+  cut, copy, reset, paste, select
 
+click
+
+resize: 브라우저 창 크기 조절
+
+focus
+blur
+
+keypress: 키 누르고 있는 동안 계속.
+keydown:키를 눌렀을 때(1강)
+keyup:키에서 손을 땠을 때
+
+load:웹페이지에서 사용할 모든 파일 다운로드 완료
+
+unload: 링크 클릭해서 다른 페이지로 갈 때/브라우저 탭 닫을 때/브라우저 창 닫을 때
+
+scroll: 스크롤바 드래그/키보드사용 스크롤/마우스 휠 이용 스크롤 할 때
+
+dbclick: 두 번 눌렀다 땔 때
+mousedown: 마우스 클릭
+mouseout: 마우스가 특정 객체 밖으로 나갔을 때
+mouseover: 마우스가 특정 객체 위로 올려졌을 때
+mousemove: 마우스가 움직였을 때
+mouse up: 마우스에서 손을 땠을 때 
+
+select: option 태그에서 선택했을 때
+    전 강의에서 once 쓴 부분이 option 인자. capture, once, passive 이 3개의 속성 있음-->
+
+<!--이벤트 핸들러,이벤트 리스너 안에서 쓰인 this는 이벤트 받는 html 요소.
+~~.addEventListener(~~,function(){~~this~~});
+
+요소에 이벤트를 연결하는 이벤트를 바인딩한다고 말한다.-->
+
+<!--이벤트 리스너 다시 정리
+DOM객체.addEventListener(이벤트 종류, 실행할 함수, 옵션)
+이벤트 종류가 위 주석에 적어둔 이벤트 종류
+함수를 위에서 정의하고 여기서는 이름만 써도 되고 아에 여기서 만들어도 된다.
+옵션은 생략 가능, 버블링 제어.-->
 <script>
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
-  const items = [];
+  const items = JSON.parse(localStorage.getItem('items')) || [];
+  
+  function addItem(e) {
+    // console.log('hello'); 
+    e.preventDefault();// 페이지 리로딩 그만. 폼의 디폴트가 페이지 리로딩.
+    const text=(this.querySelector('[name=item]')).value//이 함수는 이벤트 리스너에 쓰이는 함수. 그러니까 this는 이벤트 바인딩될 객체. : 폼
+    const item = {
+      // text: text, //shorthand property: 프로퍼티의 key와 value에 할당할 변수 명이 똑같으면 value 생략 가능.
+      text,
+      done: false
+    };
+    items.push(item);
+    populateList(items,itemsList);
+    localStorage.setItem('items',JSON.stringify(items));
+    this.reset();//여기서 this는 폼 엘리먼트
+  }
+
+  function populateList(plates=[],platesList) {
+    platesList.innerHTML =plates.map((plate,i)=> {//platesList의 요소를 .innerHTMl =~~~ ~~~부분으로 바꿔 화면에 출력.
+      //innerText는 element 안의 text 값만 가져오고 innerHTML은 element안의 HTML이나 XML 가져온다.
+      //배열.map((요소,인덱스,배열)=> {return 요소});반복문을 돌며 배열 안의 요소 1:1 매칭. 기존 배열 수정X 새로운 배열 생성
+      return `
+      <li>
+        <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+        <label for="item${i}">${plate.text}</label>
+      </li>
+      `;
+    }).join('');//join()은 배열의 원소들을 연결해 하나의 값으로 만드는 역할.
+  }
+
+  function toggleDone(e) {
+    if(!e.target.matches('input')) return; //e.target: 이벤트가 발생한 요소 반환. //skip this unless it's an input
+    const el = e.target;
+    const index = el.dataset.index;
+    items[index].done=!items[index].done; //아이템의 done True, false 바꾸기
+    localStorage.setItem('items',JSON.stringify(items));
+    populateList(items,itemsList);
+  }
+  addItems.addEventListener('submit',addItem);
+  itemsList.addEventListener('click',toggleDone);
+  populateList(items,itemsList);
+  // const checkBoxes = document.querySelectorAll('input');
+
+  // checkBoxes.forEach(input => input.addEventListener('click',() => alert('hi')));
+  
 
 </script>
 
