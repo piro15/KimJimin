@@ -43,7 +43,7 @@
   </div>
 
   <script>
-    function debounce(func, wait = 20, immediate = true) {
+    function debounce(func, wait = 20, immediate = true) {//wait이 인터벌.밀리초 단위. 1000이 1초. 20이니까 0.02초
       var timeout;
       return function() {
         var context = this, args = arguments;
@@ -57,6 +57,33 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+    function checkSlide(e) {
+      // console.log(e);
+      // console.count(e);
+      // console.log(window.scrollY);//Y 방향 몇 픽셀만큼 스크롤 다운 했는지(기준은 브라우저 탑)
+      sliderImages.forEach(sliderImage => {
+        //half way through the image
+        const slideInAt = (window.scrollY + window.innerHeight)//Y방향 몇 픽셀만큼 스크롤 다운 했는디(기준은 브라우저 아래 끝)
+        -sliderImage.height/2;//
+        // console.log(slideInAt);
+        //bottom of the image
+        const imageBottom = sliderImage.offsetTop+sliderImage.height;
+        const isHalfShown = slideInAt > sliderImage.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if(isHalfShown && isNotScrolledPast) {
+          sliderImage.classList.add('active');
+        }else {
+          sliderImage.classList.remove('active');
+        }
+
+
+      });
+    }
+
+    window.addEventListener('scroll',debounce(checkSlide));//debounce 함수 적용하려고 checkSlide를 ()로 씌움.
 
   </script>
 
