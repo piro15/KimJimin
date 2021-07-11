@@ -41,8 +41,53 @@
 </style>
 
 <button></button>
-<script>
+<!--classList 이용하는 다양한 메서드 정리
+classList.add: 클래스 추가
+  classList.add('이름'): '이름'을 이름으로 하는 클래스 추가
+  classList.add('이름1','이름2','이름3'..): 여러 개 한 번에 추가
+  classList.replace('변경 전','변겅 후'): 이름 변경
 
+classList.remove: 클래스 삭제
+  classList.remove('이름1','이름2','이름3'..): 여러 개 한 번에 삭제
+
+classList.contains(): 값 존재 여부 true/false
+
+classList.toggle('이름'): 값 존재 여부 확인+ 있으면 삭제 없으면 추가
+  classList.toggle('이름',조건): 조건문에 따라 토글
+
+classList.length: 클래스 아이템 갯수 세기
+
+classList.item(index): 특정 인덱스의 클래스 아이템 읽어 오기
+-->
+
+
+<!--this 정리
+단독으로 쓰인 this는 global object의미, 
+함수 안에서 쓰인 this는 함수의 주인= 윈도우 객체,
+매서드 안에서 쓰인 this는 해당 메서드를 호출한 객체. -->
+
+<script>
+  const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button');
+
+  function logText(e) {
+    console.log(this.classList.value); //클래스 이름 출력
+    // console.log(this); // div 코드들 출력
+    // e.stopPropagation();//버블 중단.버블 업,버블 다운
+  }
+  // document.body.addEventListener('click',logText);
+
+  divs.forEach(div => div.addEventListener('click',logText, {
+    capture: false,
+    //false면 나 포함 바깥까지. true면 나포함 안, 바깥까지
+    once: true//한 번만 적용
+  }));
+
+  button.addEventListener('click',()=> {
+    console.log('Click!!!');
+  },{
+    once: true
+  });
 </script>
 </body>
 </html>
