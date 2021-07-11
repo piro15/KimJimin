@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Type Ahead 👀</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="6강.css">
 </head>
 <body>
 
@@ -14,9 +14,59 @@
       <li>or a state</li>
     </ul>
   </form>
+
+  <!--스프레드 정리
+두 개의 배열을 결합할 때 concat 대신.&더 다양한 형태로.
+배열 참조 말고 복사하고 싶을 때 slice, map 대신. 새로운 복사된 배열 생성.
+rest parameter: 함수를 호출할 때 함수의 파라미터를 spread operator로 작성한 형태. 
+    함수의 파라미터로 오는 값들을 모아 배열에 넣는다.
+함수 호출 인자로 사용. apply 대신. 배열을 풀어서 전달.
+-->
 <script>
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
+// let cities =[];//또는
+const cities=[];
+
+// const prom =fetch(endpoint);//fetch(url,옵션), promise 타임의 객체 반환. api 호출 성공하면 응답 객체 resolve, 실패하면 error 객체 reject. 옵션에서는 http방식,http요청 헤더,http요청 전문 등 설정...??
+// console.log(prom)
+fetch(endpoint)//미래 시점에 얻게 될 API 호출 결과 리턴.
+.then(blob => blob.json())//정상적이면 then 메서드 호출.(수행할 로직) 비정상적이면 catch 호출(예외 처리)
+.then(data => cities.push(...data))
+
+function findMatches(wordToMatch,cities) {
+  return cities.filter(place=>{
+    //here we need to figure out if the city or state matches what was searched
+    const regex = new RegExp(wordToMatch,'gi');//new RegExp(패턴, 플래그))하면 새로운 RegExp객체 생성. g: 문자열 전체 확인 i: 대소문자 구분X 
+    return place.city.match(regex) || place.state.match(regex)//formal language=regular expression= rational expression =regexp=regex 특정한 법칙들로 구성된 문자열들의 집합.
+  })
+}
+
+function numberWithCommas(x){
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function displayMatches() {
+  const matchArray = findMatches(this.value, cities); //this.value는 사용자가 입력한 것.
+  const html = matchArray.map(place => {//matchArray의 place 요소를 반복문 돌며 return 이후 요소들로 바꾸어 새로운 배열 생성. 그 배열 이름이 html
+    const regex = new RegExp(this.value,'gi');
+    const cityName= place.city.replace(regex, `<span class="hl">${this.value}</span>`)
+    const stateName= place.state.replace(regex, `<span class="hl">${this.value}</span>`)
+    return `
+    <li>
+      <span class="name">${cityName}, ${stateName}</span>
+      <span class="population">${numberWithCommas(place.population)}</span>
+    </li>
+    `;
+  }).join('');//배열의 원소들 연결. 하나의 값으로 만들기.
+  suggestions.innerHTML =html;//suggestions 안의 HTML 가져오기
+}
+
+const searchInput=document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change',displayMatches);
+searchInput.addEventListener('keyup',displayMatches);
 </script>
 </body>
 </html>
