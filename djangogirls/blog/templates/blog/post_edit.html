@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>New post</h1>
+    <form method="POST" class="post-form">{% csrf_token %}<!--폼 보안을 위해 중요한 부분. 
+        임의의 난수 생성해서 저장. 사용자의 매 요청마다 해당 난수 값 포함해서 전송.
+    Cross Site Request Forgery-->
+        {{ form.as_p }}<!--모델 폼과 연결된 입력항목 값 입력할 수 있는 HTML 코드 자동 생성..-->
+        <button type="submit" class="save btn btn-default">Save</button><!--save버튼.-->
+    </form>
+{% endblock %}

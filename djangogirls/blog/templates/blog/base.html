@@ -11,6 +11,9 @@
     <body>
         
             <div class="page-header">
+                {% if user.is_authenticated %} <!--관리자로 로그인한 유저들에게만 보이게.로그인 한 사람에게만 이 링크가 발생. -->
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                {% endif %}
                 <h1><a href="/">Django Girls Blog</a></h1>
             </div>
             <div class="content container">

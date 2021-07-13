@@ -9,4 +9,7 @@ urlpatterns = [
     # post/ : url이 post 문자를 포함해야 한다.
     # <int:pk>: 정수값을 기대하고 이를 pk라는 변수로 뷰로 전송한다
     # /: 다음에 /가 한 번 더 온다
+    path('post/new', views.post_new, name='post_new'),
+    path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
+
 ]
