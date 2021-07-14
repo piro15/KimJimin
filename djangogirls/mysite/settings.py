@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+# 장고 프로젝트의 기본 설정 지원. 경로 지정, 시간 설정, app 연결,
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'blog',  # 나 이제 blog라는 애플리케이션 만들었고, 이거 사용할 거다.
 ]
 
 MIDDLEWARE = [
@@ -74,13 +74,16 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
+DATABASES = {  # 데이터를 저장할 공간인 데이터베이스 소프트웨어.데이터베이스: 데이터의 집합 우리가 쓰는 건 sqlite3
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+# makemigrations: 마이그레이션 파일 초안 생성.
+# migrate: 해당 마이그레이션 파일을 DB(우리는 sqlite3)에 반영하기.
+# showmigrationsL 마이그레이션 적용 현황 확인
+# sqlmigrate: 지정 마이그레이션의 SQL 내역.
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -120,3 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# os.path.join은 두 문자열을 합쳐서 하나의 경로를 만드는 역할.
+# BASE_DIR은 장고 프로젝트 루트 디렉토리 경로.
+# static은 그 뒤에 덧붙일 경로.

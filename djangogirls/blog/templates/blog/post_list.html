@@ -1,12 +1,13 @@
-{% extends 'blog/base.html' %}
-
-{% block content %}
+{% extends 'blog/base.html' %}<!--base와 post_list 연결-->
+<!--글 목록 템플릿-->
+{% block content %}<!--템플릿 태그.다른 부붑은 base.html이랑 똑같고 블럭부분에 이 블럭이 들어가는 것.-->
     {% for post in posts %}
         <div class="post">
             <div class="date">
                 {{ post.published_date }}
             </div>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1><!--pk는 Primary Key. 데이터 베이스의 각 레코드 식별하는 기본키. 
+                레코드란 논리적으로 연관된 필드(가장 작은 단위의 데이터)들의 집합.튜플   https://93jpark.tistory.com/23-->
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
     {% endfor %}

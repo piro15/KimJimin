@@ -1,4 +1,5 @@
-{% load static %}
+{% load static %}<!---웹페이지마다 공통적으로 들어가는 HTML 코드를 base template 기본 템플릿으로 만들어서 따로 저장. 
+    그리고 각 웹페이지마다 변경해야 하는 부분만 변경. 이 과정이 템플릿 확장.-->
 <html>
     <head>
         <title>Django Girls blog</title>
@@ -19,7 +20,7 @@
             <div class="content container">
                 <div class="row">
                     <div class="col-md-8">
-                    {% block content %}
+                    {% block content %}<!--이 파일의 나머지 코드들이 그대로 공통적으로 쓰이되 이 블럭 부분만 각 페이지에 쓰인 코드에 따라 다른 것. -->
                     {% endblock %}
                     </div>
                 </div>

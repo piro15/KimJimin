@@ -5,8 +5,8 @@ from django import forms
 from .models import Post
 
 
-class PostForm(forms.ModelForm):  # PostForm이 만들 폼의 이름, 이 폼이 ModelForm이다.
+class PostForm(forms.ModelForm):  # PostForm이 만들 폼의 이름, 이 폼이 ModelForm이다.(상속)
 
     class Meta:
-        model = Post  # 이 폼 만들려면 필요한 모델 무엇.
+        model = Post  # 이 폼 만들려면 Post 모델 필요.
         fields = ('title', 'text',)

@@ -4,7 +4,7 @@ from django.utils import timezone
 from .models import Post
 from .forms import PostForm
 
-# Create your views here.
+# 애플리케이션의 로직 넣는 곳. 모델에서 정보 받아오고 템플릿에 전달.
 
 
 def post_new(request):
@@ -14,9 +14,9 @@ def post_new(request):
             post = form.save(commit=False)  # 바로 저장하지 말고
             post.author = request.user  # 작성자 추가
             post.published_date = timezone.now()
-            post.save()  # 변경사항 유지
+            post.save()  # 변경사항 유지하고 이 차례에서 새 블로그 글 생성.
             return redirect('post_detail', pk=post.pk)
-            #redirect(to, permanent=False, *args, **kwargs)
+            # redirect(to, permanent=False, *args, **kwargs) post_detail 뷰로 가기. 어느 글인지 알려면 pk변수 필요하니까 이 값 갖고서.
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
@@ -26,12 +26,13 @@ def post_new(request):
 
 
 def post_list(request):
-    posts = Post.objects.filter(
+    posts = Post.objects.filter(  # 변수. 이 변수를 쿼리셋의 이름. 이 쿼리셋을 이제 밑에 줄에서 템플릿으로 보낸다.
         published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 
 def post_detail(request, pk):
+    # 그냥 Post.objects.get(pk=pk)라고 하면, 오류나왔을 때 오류가 뜬다. 예외처리같은 느낌으로 이에 대비해 404 나오게 만드는 것.
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 

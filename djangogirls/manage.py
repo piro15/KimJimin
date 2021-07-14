@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 import os
 import sys
-
-if __name__ == "__main__":
+# 다른 설치없이 컴퓨터에서 웹 서버 시작가능하게 하는 스크립트.
+if __name__ == "__main__":  # 파이썬 프로그램 시작점.
+    # 모듈.함수.
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
     try:
         from django.core.management import execute_from_command_line
