@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Item
 # from shop.models import Item
 
 # Create your views here.
@@ -15,3 +16,15 @@ from django.http import HttpResponse
 
 def archives_year(request, year):
     return HttpResponse('{}년도에 대한 내용'.format(year))
+
+
+def item_list(request):
+    qs = Item.objects.all()  # 가져올 예정이다
+
+    q = request.GET.get('q', '')  # GET인자에서 값을 하나 가져온다. q를 가져오는데 없으면 빈문자열 반환
+    if q:  # 검색어가 있다먄
+        qs = qs.filter(name__icontains=q)  # 대소문자 구분 안하겠다.
+    return render(request, 'shop/item_list.html', {
+        'item_list': qs,  # 템플릿은 item_list로 qs를 참조하겠다
+        'q': q,
+    })
