@@ -21,3 +21,10 @@ urlpatterns = [
 # resolve_url 쓰는 두 줄이 redirect쓰는 한 줄과 같다. 그러니 후자 쓰는 게 더 좋다.
 
 # Http404쓸 거면 raise. HttpResponseNotFound 쓸 거면 return. 하지만 후자는 잘 쓰지X
+
+
+# 그냥 python3, exit() 이거 말고
+# python3 manage.py shell 쓰기
+# 전자: 장고 초기화 과정..?이 없어서 오류 뜬다. 할 수는 있다. 근데 번거롭다. 코드는 pdf에. 또는 --help에서 명령 추가
+
+# 파이프 명령 | 두 명령어 이어주기. 앞 명령의 표준 출력을 뒷 명령의 표준 입력으로 넣어준다.

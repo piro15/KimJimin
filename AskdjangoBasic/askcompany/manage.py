@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
-
+# 장고 관리의 진입점
 if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'askcompany.settings')
     try:
