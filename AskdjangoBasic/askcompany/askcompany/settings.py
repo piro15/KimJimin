@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'django_extensions',
+    'blog',
 
 ]
 
@@ -121,3 +122,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# 마이그레이션, 마이그레이트: 모델의 변경내역을 데이터베이스 스키마(데이터 베이스 구조)에 반영.
+# makemigrations: 마이그레이트할 파일 생성. 생성된 파일은 migrations디렉토리안에.
+# 모델 필드 관련 어떤 변경이라도 발생하면!!! 하상 할 것. 변경 내역 누적.
+# 파일이 너무 많아졌다고 지우면 절대 안된다. squashmigrations 명령으로 파일 통합은 가능.
+# migrate: 마이그레이션 적용
+# showmigrations: 마이그레이션 적용 현황 출력 X표가 적용완료 됐다는 표시.
+# sqlmigrate 앱이름 마이그레이션이름 : SQL 내역 출력
+# 마이그레이트 아직 안하고 하면 보여지긴 한다. 그대로 했다는 게 아니라 ~~이렇게 할 예정이라는 것을 보여주는 것.
+#정방향, 역방향(롤백)

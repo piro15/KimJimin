@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
     dependencies = [
     ]
 
-    operations = [
+    operations = [  # 리스트로 나열. 데이터베이스에 어떤 변화를 가하는 오퍼레이션들. forward적용. backward적용.
         migrations.CreateModel(
             name='Item',
             fields=[
@@ -25,3 +25,7 @@ class Migration(migrations.Migration):
             ],
         ),
     ]
+
+# 모델 만들고 makemigrations로 파일 생성.
+# 생성된 migration 파일 확인, sql확인. 제대로 안됐으면 수정하거나 제거해서 다시 하거나
+# 제대로 잘 만들어졌으면 migrate로 적용. migrate하지 않은 파일은 언제든 삭제 가능. 한 파일을 삭제하면 꼬인다.
