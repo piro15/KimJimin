@@ -1,3 +1,4 @@
+# from django.conf import settings
 from django.db import models
 
 
@@ -22,3 +23,9 @@ class Item(models.Model):
     # 왜 딕셔너리로 그런 값을 반환하느냐: 포스트, 댓글 있다고 생각. 포스트 지우면 댓글도 같이 삭제. 댓글까지 포함한 개수와, 댓글 모델과 댓글의 삭제 개수, 글 모델과 글 삭제 개수.
     # 총, 각 모델과 삭제 개수
     # delete할 때도 가급적 쿼리셋사용하기.
+
+# RDBMS에서 1:N, M:N 헷갈릴 때 역으로 생각해도 성립되면 후자. 아니면 전자
+
+# class Post(models.Model):
+#     author = models.ForeignKey(
+#         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
