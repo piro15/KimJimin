@@ -14,10 +14,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Item',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('desc', models.TextField(blank=True)),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                 serialize=False, verbose_name='ID')),  # verbose name은 화면에 뭐라고 보여지게 하고 싶은지
+                ('name', models.CharField(max_length=100)),  # 글자 수 제한O
+                ('desc', models.TextField(blank=True)),  # 공백 허용 글자수 제한X
                 ('price', models.PositiveIntegerField()),
+                # auto_now_add는 최종 저장 시각, auto_now는 수정 저장될 때 마다.
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now_add=True)),
             ],
