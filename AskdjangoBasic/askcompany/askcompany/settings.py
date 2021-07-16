@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '5_+^djm(1x(+(&^a)8&p8qz%=@%rq#3b9bct3uwm1$q@cpam(4'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# !!!!!!SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -37,13 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'shop',
-    'django_extensions',
     'blog',
+
+    'django_extensions',
+    'debug_toolbar',
 
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -83,7 +87,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+# connection 이면 디폴트, connections면 딕셔너리 형식으로 각 db이름에 맞게.
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -123,6 +127,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+INTERNAL_IPS = ['127.0.0.1']
+
+
 # 마이그레이션, 마이그레이트: 모델의 변경내역을 데이터베이스 스키마(데이터 베이스 구조)에 반영.
 # makemigrations: 마이그레이트할 파일 생성. 생성된 파일은 migrations디렉토리안에.
 # 모델 필드 관련 어떤 변경이라도 발생하면!!! 하상 할 것. 변경 내역 누적.
@@ -132,3 +140,8 @@ STATIC_URL = '/static/'
 # sqlmigrate 앱이름 마이그레이션이름 : SQL 내역 출력
 # 마이그레이트 아직 안하고 하면 보여지긴 한다. 그대로 했다는 게 아니라 ~~이렇게 할 예정이라는 것을 보여주는 것.
 #정방향, 역방향(롤백)
+
+
+# 장고 디버그 툴바는 현재 서버에 대한 모든 환경변수 목록을 확인할 수 있기 때문에 아무나 확인할 수 있게 해주면 안된다.
+# 장고 디버그 툴바 띄우기를 허용할 ip목록이 INTERNAL_IPS
+# 로컬 호스트에서만 띄우게 설정.

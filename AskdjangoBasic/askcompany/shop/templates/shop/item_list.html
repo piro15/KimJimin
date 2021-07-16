@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <title>Blog for Ask Company</title>
     </head>
-    <body>
+    <body><!--body 태그 있어야 디버그툴바 나옴-->
         <h1>Ask Company</h1>
         <form action="" method="GET">
             <input type="text" name="q" value="{{q}}"/>
@@ -22,3 +22,11 @@
         </ul>
     </body>
 </html>
+
+
+<!--python3 manage.py shell 
+from shop.models import Item
+qs = Item.objects.all()
+qs.query
+str(qs.query)
+-->
