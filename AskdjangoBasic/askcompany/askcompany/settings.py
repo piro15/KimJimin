@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5_+^djm(1x(+(&^a)8&p8qz%=@%rq#3b9bct3uwm1$q@cpam(4'
 
 # !!!!!!SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True  # 파이썬 소스코드 변경될 때마다 서버 재시작.
 
 ALLOWED_HOSTS = []
 
@@ -64,7 +64,7 @@ TEMPLATES = [
     {
         # jinja2, mako, genshi, hamIPY도 있긴 하다.하지만 이게 가장 편하다.
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
+        'DIRS': [  # 리스트라서 여러 디렉토리 넣어줄 수 있지만 대개 한 개.
             os.path.join(BASE_DIR, 'askcompany', 'templates'),
         ],  # 템플릿 둘 디렉토리 경로 리스트. 각 앱에서 쓰일 템플릿은 앱 안의 템플릿 디렉토리에, 프로젝트 전빈적으로 쓰일 템플릿은 여기에.
         'APP_DIRS': True,  # 앱별로 템플릿 경로 추가할 것인지. False로 하면 각 앱 아래 있는 템플릿 경로 사용X
