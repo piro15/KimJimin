@@ -120,6 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
+# 장고 템플릿 시간 날짜 관련 https://youngwonhan-family.tistory.com/37
 
 USE_I18N = True
 
