@@ -7,6 +7,10 @@ extends load include block comment lorem spaceless url varbatim with-->
 {%block content%}
     <h2>{{ item.name }}</h2>
 
+    {%if item.photo %}
+        <img src="{{item.photo.url}}" style="max-width: 100px;"/><br/>
+    {% endif %}
+    
     가격: {{item.price| intcomma}}원<!--템플릿 필터 - 첫 번째 인자 | 두 번쨰 인자(있을 수도 있고 없을 수도 있고)
     두 번째 인자 : add, cut, default, filesizeformat, join, linebreaks, pprint, truncatechars-->
     {% if item.desc %}<!--템플릿 태그- 인자 원하는 개수만큼. 템플릿 필터보다 많은 인자 처리 필요할 때 사용.-->

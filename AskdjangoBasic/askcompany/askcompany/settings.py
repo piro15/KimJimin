@@ -138,6 +138,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'askcompany', 'static'),
 ]
 
+MEDIA_URL = '/media/'  # 미디어 필드는 파일필드, 이미지 필드. 상속받아서 커스텀 필드 생성 가능.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 INTERNAL_IPS = ['127.0.0.1']
 
 

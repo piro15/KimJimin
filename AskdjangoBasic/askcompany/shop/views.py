@@ -36,7 +36,7 @@ def item_list(request):
 #   status(200,300,404,500...),
 #   using(템플릿 엔진 지정. 지정 안하면 기본인 장고 템플릿 엔진.)
 
-# 프로젝트 디렉토리 주소 뒤에 붙여서 매칭 시도. 없으면 각 앱 디렉토리 주소 뒤에 붙여서 매칭 시도. 마지막 앱까지 시도했는데 못 찾으면 찾을 수 없다고 출력.
+# request.GET request.POST request.FILES
 
 
 def item_detail(request, pk):
