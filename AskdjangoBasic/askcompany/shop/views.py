@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 from .models import Item
 # from shop.models import Item
@@ -24,6 +24,7 @@ def item_list(request):
     q = request.GET.get('q', '')  # GET인자에서 값을 하나 가져온다. q를 가져오는데 없으면 빈문자열 반환
     if q:  # 검색어가 있다먄
         qs = qs.filter(name__icontains=q)  # 대소문자 구분 안하겠다.
+
     return render(request, 'shop/item_list.html', {  # 그냥 item_list말고 shop/꼭 붙여줘야 한다.
         'item_list': qs,  # 템플릿은 item_list로 qs를 참조하겠다
         'q': q,
@@ -36,3 +37,10 @@ def item_list(request):
 #   using(템플릿 엔진 지정. 지정 안하면 기본인 장고 템플릿 엔진.)
 
 # 프로젝트 디렉토리 주소 뒤에 붙여서 매칭 시도. 없으면 각 앱 디렉토리 주소 뒤에 붙여서 매칭 시도. 마지막 앱까지 시도했는데 못 찾으면 찾을 수 없다고 출력.
+
+
+def item_detail(request, pk):
+    item = get_object_or_404(Item, pk=pk)
+    return render(request, 'shop/item_detail.html', {
+        'item': item,
+    })

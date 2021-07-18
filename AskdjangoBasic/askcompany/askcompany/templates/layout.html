@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>{%block titile %}Blog for Ask Company{%endblock%}</title>
+        <style>
+            body {background-color: lightpink;}
+        </style>
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body>
+        <h1>Ask Company</h1>
+       
+        {%block content%} <!--block 이름 각각 다르게 지정. 중복 허용X-->
+        <!--여기에 쓰는 내용은 디폴트용. 자식 내용이 있으면 그 내용으로, 없으면 이 내용으로. 
+            이 내용도 넣고 자식 내용도 넣고 싶으면 자식에서 block super -->
+        {%endblock%}
+       <hr/>
+       &copy: 2018. Ask Company.
+       
+       {% block extra_body %}{% endblock %}
+        
+    </body>
+</html>
