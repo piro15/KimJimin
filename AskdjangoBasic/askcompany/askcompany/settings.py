@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 프로젝트 경로.
 
 
 # Quick-start development settings - unsuitable for production
@@ -61,18 +62,22 @@ ROOT_URLCONF = 'askcompany.urls'
 
 TEMPLATES = [
     {
+        # jinja2, mako, genshi, hamIPY도 있긴 하다.하지만 이게 가장 편하다.
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [
+            os.path.join(BASE_DIR, 'askcompany', 'templates'),
+        ],  # 템플릿 둘 디렉토리 경로 리스트. 각 앱에서 쓰일 템플릿은 앱 안의 템플릿 디렉토리에, 프로젝트 전빈적으로 쓰일 템플릿은 여기에.
+        'APP_DIRS': True,  # 앱별로 템플릿 경로 추가할 것인지. False로 하면 각 앱 아래 있는 템플릿 경로 사용X
         'OPTIONS': {
-            'context_processors': [
+            'context_processors': [  # 이 함수들은 모두 인자를 하나 받는다. request. 반환은 딕셔너리
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    },
+    },  # 사전 하나.
+    # 또 다른 사전 하나 추가해서 다른 템플릿 랭귀지 사용할 수 있다. 다수의 템플릿 엔진 설치 가능.
 ]
 
 WSGI_APPLICATION = 'askcompany.wsgi.application'

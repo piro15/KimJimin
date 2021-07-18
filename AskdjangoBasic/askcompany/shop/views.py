@@ -28,3 +28,9 @@ def item_list(request):
         'item_list': qs,  # 템플릿은 item_list로 qs를 참조하겠다
         'q': q,
     })
+
+# render는 HttpResponse 반환.
+# 인자는 request, template_name, context(주로 딕셔너리 형태),
+#   content_type(text/html, text/css, text/javascript),
+#   status(200,300,404,500...),
+#   using(템플릿 엔진 지정. 지정 안하면 기본인 장고 템플릿 엔진.)
