@@ -7,10 +7,10 @@ app_name = 'shop'
 
 
 urlpatterns = [
-    path('archives/<yyyy:year>/', views.archives_year),
-    path('', views.item_list),
+    path('archives/<yyyy:year>/', views.archives_year, name='archives_year'),
+    path('', views.item_list, name='item_list'),
     # 모델, url, view, template 다 했는데 안뜬다: pk값 삭제한 아이템 pk값은 아닌지 확인.
-    path('<int:pk>/', views.item_detail),
+    path('<int:pk>/', views.item_detail, name='item_detail'),
 ]
 
 

@@ -1,5 +1,6 @@
 # from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from askcompany.utils import uuid_upload_to
 
 
@@ -16,6 +17,9 @@ class Item(models.Model):
         # return self.name
         return f'<{self.pk}> {self.name}'.format(self.pk, self.name)
 
+    def get_absolute_url(self):
+        # return reverse('shop:item_detail', args=[self.pk]
+        return reverse('shop:item_detail', kwargs={'pk': self.pk})
 
 # 정렬 지정: 모델 클래스 만들 때 같이 하는 걸 추천.
     # 이 방법이 default 설정하는 거라서 만약 orderby 나중에 넣어주면 그거 따라 실햄.
