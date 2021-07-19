@@ -1,5 +1,6 @@
 from django.conf import settings
-from django.shortcuts import redirect, render
+from django.contrib.auth import login as auth_login
+from django.shortcuts import redirect, render, resolve_url
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -13,17 +14,29 @@ from .forms import SignupForm
 #         form = SignupForm(request.POST)
 #         if form.is_valid():
 #             user = form.save()
-#             return redirect(settings.LOGIN_URL)  # 회원가입 제대로 했으면 로그인 페이지
+#             auth_login(request, user)
+#             return redirect('profile')  # 회원가입 제대로 했으면 로그인 페이지
 #     else:
 #         form = SignupForm()
 #     return render(request, 'accounts/signup.html', {
 #         'form': form,
 #     })
 
-signup = CreateView.as_view(model=User,
-                            form_class=SignupForm,
-                            success_url=settings.LOGIN_URL,
-                            template_name='accounts/signup.html')
+class SignupView(CreateView):
+    model = User
+    form_class = SignupForm
+    template_name = 'accounts/signup.html'
+
+    def get_success_url(self):
+        return resolve_url('profile')
+
+    def form_valid(self, form):
+        user = form.save()
+        auth_login(self.request, user)
+        return redirect(self.get_success_url())
+
+
+signup = SignupView.as_view()
 
 
 @login_required  # 뷰가 호출돼서 프로필 템플릿 보여주는 건 로그인 된 상황에 국한되게.
