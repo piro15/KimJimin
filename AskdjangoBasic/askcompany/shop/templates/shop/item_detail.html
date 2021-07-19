@@ -1,14 +1,11 @@
 {% extends "shop/layout.html" %}
-<!--for,endfor if,endif ifchanged
-extends load include block comment lorem spaceless url varbatim with-->
 {% load humanize %}
 
-
 {%block content%}
-<h2>{{ item.name }}</h2>
+    <h2>{{ item.name }}</h2>
 
     {%if item.photo %}
-        <img src="{{item.photo.url}}" style="max-width: 100px;"/><br/>
+        <img src="{{ item.photo.url }}" style="max-width: 100%;"/>
     {% endif %}
     
     가격: {{item.price| intcomma}}원<!--템플릿 필터 - 첫 번째 인자 | 두 번쨰 인자(있을 수도 있고 없을 수도 있고)
@@ -19,8 +16,9 @@ extends load include block comment lorem spaceless url varbatim with-->
         </p>
     {% endif %}
     <hr/>
-    <a href="/shop/">목록</a>
-{%endblock%}
+    <a href="{% url "shop:item_list" %}">목록</a>
+    <a href="{% url "shop:item_edit" item.pk %}">수정</a>
+{% endblock %}
 
 
    

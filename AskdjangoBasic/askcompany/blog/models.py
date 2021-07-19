@@ -1,8 +1,5 @@
-# from django.conf import settings
-
 from django.db import models
 from askcompany.utils import uuid_upload_to
-# Create your models here.
 
 
 class Post(models.Model):
@@ -18,8 +15,6 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    # Post 삭제하면 관련 댓글도 다 삭제.
-    # CASCADE, SET_NULL, SET이 세 가지가 주로 쓰임.
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     message = models.TextField()
 

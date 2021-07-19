@@ -1,19 +1,21 @@
-{% extends "shop/layout.html" %}<!--자식 템플릿 최상단에 항상 제일 먼저 쓰기 -->
+{% extends "shop/layout.html" %}
+{% load humanize %}
 
 {%block content%}
-
-        </form>
         <ul>
             {%for item in item_list %}
                 <li>
                     <a href="{{ item.get_absolute_url }}">
                         {{item.name}}
                     </a>
-                    {{item.price}}
-                    {{item.desc}}
+                    {{ item.price }}
+                    {{ item.desc }}
                 </li>
             {% endfor %}
         </ul>
+
+        <hr />
+        <a href="{% url "shop:item_new" %}">New Item</a>
 {%endblock%}
 
 
@@ -24,10 +26,3 @@ qs.query
 str(qs.query)
 -->
 
-<!--장고 템플릿 언어 {{ 안에서 인자 없는 함수 호출 가능. 
-    장고 탬플릿 태그 {% for,endfor if,endif include load verbatim
-    장고 템플릿 필터 {{값|필터:인자|필터:인자
-    
-    템플릿 사용하는 이유:
-    복잡한 문자열 좀 더 편리하게 조합하려고. 
--->
