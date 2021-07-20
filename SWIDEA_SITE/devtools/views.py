@@ -42,7 +42,7 @@ def tool_edit(request, pk):
         return render(request, template_name='devtool/form.html', context=ctx)
 
 
-def tool_delete(pk):
+def tool_delete(request, pk):
     tool = Tool.objects.get(id=pk)
     tool.delete()
     return redirect('devtools:tool_list')

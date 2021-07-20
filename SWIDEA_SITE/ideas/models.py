@@ -11,7 +11,7 @@ class Idea(models.Model):
 
     interest = models.IntegerField(default=0)
     devtool = models.ForeignKey(
-        to='devtools.Tool', on_delete=models.SET_NULL, null=True)
+        to='devtools.Tool', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.title

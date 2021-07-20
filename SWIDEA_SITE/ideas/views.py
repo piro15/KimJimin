@@ -40,7 +40,7 @@ def idea_edit(request, pk):
         return render(request, template_name='idea/form.html', context=ctx)
 
 
-def idea_delete(pk):
+def idea_delete(request, pk):
     idea = Idea.objects.get(id=pk)
     idea.delete()
     return redirect('ideas:idea_list')
