@@ -1,0 +1,10 @@
+
+
+{%for idea in idea %}
+        <img src="{{ idea.image.url }}" style="max-width: 100%;"/>
+        <h1><a href="{% url 'ideas:idea_detail' idea.pk%}">{{ idea.title }}</a></h1>
+        <p>예상 개발 툴:{{ idea.devtool }}</p>
+        <p>아이디어 관심도: {{ idea.interest }}</p>
+
+{% endfor %}
+

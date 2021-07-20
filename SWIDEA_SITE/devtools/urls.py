@@ -6,6 +6,7 @@ app_name = 'devtools'
 urlpatterns = [
     path('', views.tool_list, name='tool_list'),
     path('<int:pk>/', views.tool_detail, name='tool_detail'),
-    path('create/', views.create_tool, name='create_tool'),
-    path('<int:pk>/edit/', views.edit_tool, name='edit_tool'),
+    path('create/', views.tool_create, name='tool_create'),
+    path('<int:pk>/edit/', views.tool_edit, name='tool_edit'),
+    path('<int:pk>/delete/', view=views.tool_delete, name='tool_delete'),
 ]

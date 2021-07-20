@@ -6,7 +6,7 @@ app_name = 'ideas'
 urlpatterns = [
     path('', views.idea_list, name='idea_list'),
     path('<int:pk>/', views.idea_detail, name='idea_detail'),
-    path('create/', views.create_idea, name='create_idea'),
-    path('<int:pk>/edit/', views.edit_idea, name='edit_idea'),
-    path('<int:pk>/delete/', view=views.idea_delete, name='idea_delete'),
+    path('create/', views.idea_create, name='idea_create'),
+    path('<int:pk>/edit/', views.idea_edit, name='idea_edit'),
+    path('<int:pk>/delete/', views.idea_delete, name='idea_delete'),
 ]

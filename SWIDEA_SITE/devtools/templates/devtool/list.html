@@ -1,0 +1,9 @@
+
+
+{%for tool in tool_list %}
+    <a href="{% url "tools:tool_detail" %}">
+        {{tool.name}}
+    </a>
+    <p>{{ tool.kind }}</p>
+    <p>{{ tool.description }}</p>
+{% endfor %}

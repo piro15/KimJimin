@@ -1,0 +1,13 @@
+
+<h1>{{ idea.title }}</h1>
+<img src="{{ idea.image.url }}" style="max-width: 100%;"/>
+<br/>
+    1) 아이디어 관심도: {{ idea.interest }}
+    <br/>
+    2) 예상 개발 툴:<a href="{% url 'devtools:tool_detail' idea.devtool.pk%}">{{ idea.devtool }}</a>
+    <br/>
+    3) 아이디어 설명:{{ idea.content }}
+
+    <button class="btn btn-info" onclick="location.href='{% url "ideas:idea_delete" idea.pk%}'"> 삭제 </button>
+    <button class="btn btn-info" onclick="location.href='{% url "ideas:idea_edit" idea.pk%}'"> 수정 </button>
+    <button class="btn btn-info" onclick="location.href='{% url "ideas:idea_list" %}'"> 목록 </button>
