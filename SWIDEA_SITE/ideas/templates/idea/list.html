@@ -1,7 +1,10 @@
 
-
+<a href="{% url 'ideas:idea_create' %}">새 아이디어 등록</a>
+<br/>
 {%for idea in idea %}
-        <img src="{{ idea.image.url }}" style="max-width: 100%;"/>
+        {% if idea.image %}
+                <img src="{{ idea.image.url }}" style="max-width: 100%;"/>
+        {% endif %}
         <h1><a href="{% url 'ideas:idea_detail' idea.pk%}">{{ idea.title }}</a></h1>
         <p>예상 개발 툴:{{ idea.devtool }}</p>
         <p>아이디어 관심도: {{ idea.interest }}</p>

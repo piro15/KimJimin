@@ -1,7 +1,8 @@
 
-
-{%for tool in tool_list %}
-    <a href="{% url "tools:tool_detail" %}">
+<a href="{% url 'devtools:tool_create' %}">새 개발 툴 등록</a>
+<br/>
+{%for tool in tool %}
+    <a href="{% url 'devtools:tool_detail' tool.pk%}">
         {{tool.name}}
     </a>
     <p>{{ tool.kind }}</p>

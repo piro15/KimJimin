@@ -6,7 +6,7 @@ from django.db import models
 class Idea(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(
-        upload_to='idea_image/%Y/%m/%d/', null=True, blank=True)
+        upload_to='idea_image/%Y/%m/%d/%h', null=True, blank=True)
     content = models.TextField()
 
     interest = models.IntegerField(default=0)

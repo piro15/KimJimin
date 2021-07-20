@@ -21,8 +21,8 @@ def tool_create(request):
     if request.method == 'POST':
         form = ToolForm(request.POST)
         if form.is_valid():
-            tool = form.save()
-            return redirect('tools:tool_detail')
+            post = form.save()
+            return redirect('devtools:tool_list', pk=post.pk)
     else:
         form = ToolForm()
         ctx = {'form': form}
@@ -32,17 +32,17 @@ def tool_create(request):
 def tool_edit(request, pk):
     post = get_object_or_404(Tool, id=pk)
     if request.method == 'POST':
-        tool = ToolForm(request.POST, instance=post)
-        if tool.is_valid():
-            post = tool.save()
-            return redirect('tools:tool_detail', pk)
+        form = ToolForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save()
+            return redirect('devtools:tool_detail', pk)
     else:
-        tool = ToolForm(instance=post)
-        ctx = {'tool': tool}
+        form = ToolForm(instance=post)
+        ctx = {'form': form}
         return render(request, template_name='devtool/form.html', context=ctx)
 
 
 def tool_delete(pk):
     tool = Tool.objects.get(id=pk)
     tool.delete()
-    return redirect('tools:tool_list')
+    return redirect('devtools:tool_list')

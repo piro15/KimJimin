@@ -1,6 +1,8 @@
 
 <h1>{{ idea.title }}</h1>
-<img src="{{ idea.image.url }}" style="max-width: 100%;"/>
+{% if idea.image %}
+    <img src="{{ idea.image.url }}" style="max-width: 100%;"/>
+{% endif %}
 <br/>
     1) 아이디어 관심도: {{ idea.interest }}
     <br/>

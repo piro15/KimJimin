@@ -20,7 +20,7 @@ def idea_create(request):
         form = IdeaForm(request.POST)
         if form.is_valid():
             post = form.save()
-            return redirect('ideas:idea_detail')
+            return redirect('ideas:idea_detail', pk=post.pk)
     else:
         form = IdeaForm()
         ctx = {'form': form}
@@ -30,13 +30,13 @@ def idea_create(request):
 def idea_edit(request, pk):
     post = get_object_or_404(Idea, id=pk)
     if request.method == 'POST':
-        idea = IdeaForm(request.POST, instance=post)
-        if idea.is_valid():
-            post = idea.save()
-            return redirect('tools:tool_detail', pk)
+        form = IdeaForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save()
+            return redirect('ideas:idea_detail', pk)
     else:
-        idea = IdeaForm(instance=post)
-        ctx = {'idea': idea}
+        form = IdeaForm(instance=post)
+        ctx = {'form': form}
         return render(request, template_name='idea/form.html', context=ctx)
 
 
