@@ -17,7 +17,7 @@ def idea_detail(request, pk):
 
 def idea_create(request):
     if request.method == 'POST':
-        form = IdeaForm(request.POST)
+        form = IdeaForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save()
             return redirect('ideas:idea_detail', pk=post.pk)

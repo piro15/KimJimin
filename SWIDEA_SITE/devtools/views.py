@@ -22,7 +22,7 @@ def tool_create(request):
         form = ToolForm(request.POST)
         if form.is_valid():
             post = form.save()
-            return redirect('devtools:tool_list', pk=post.pk)
+            return redirect('devtools:tool_detail', pk=post.pk)
     else:
         form = ToolForm()
         ctx = {'form': form}
