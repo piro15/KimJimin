@@ -5,9 +5,19 @@
 {% if idea.image %}
         <img src="{{ idea.image.url }}" style="max-width: 100%;"/>
 {%endif%}
+        <p>
         <h1><a href="{% url 'ideas:idea_detail' idea.pk%}">{{ idea.title }}</a></h1>
         <p>예상 개발 툴:{{ idea.devtool }}</p>
-        <p>아이디어 관심도: {{ idea.interest }}</p>
+        아이디어 관심도: {{ idea.interest }}
+        <button class="btn" id="up">+</button>
+        <button class="btn" id="down">-</button>
+        </p>
 
 {% endfor %}
 
+<script>
+        const button = document.querySelectorAll('.btn');
+        button.forEach(button => button.addEventListener('click',()=> {
+        console.log('Click!!!');
+        }));
+</script>

@@ -5,6 +5,10 @@
     <br/>
     {{ tool.description }}
     <br/>
+    {%for idea in tool.idea_set.all %}
+        <a href="{% url 'ideas:idea_detail' idea.pk%}">{{ idea.title }}</a>
+    {% endfor %}
+
     <button class="btn" onclick="location.href='{% url 'devtools:tool_delete' tool.pk %}'">삭제</button>
     <button class="btn" onclick="location.href='{% url 'devtools:tool_edit' tool.pk %}'">수정</button>
     <button class="btn" onclick="location.href='{% url "devtools:tool_list" %}'">목록</button>

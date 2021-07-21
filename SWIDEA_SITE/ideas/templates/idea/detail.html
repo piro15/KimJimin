@@ -10,6 +10,6 @@
     <br/>
     3) 아이디어 설명:{{ idea.content }}
 
-    <button class="btn btn-info" onclick="location.href='{% url "ideas:idea_delete" idea.pk %}'"> 삭제 </button>
-    <button class="btn btn-info" onclick="location.href='{% url "ideas:idea_edit" idea.pk %}'"> 수정 </button>
-    <button class="btn btn-info" onclick="location.href='{% url "ideas:idea_list" %}'"> 목록 </button>
+    <button class="btn" onclick="location.href='{% url "ideas:idea_delete" idea.pk %}'"> 삭제 </button>
+    <button class="btn" onclick="location.href='{% url "ideas:idea_edit" idea.pk %}'"> 수정 </button>
+    <button class="btn" onclick="location.href='{% url "ideas:idea_list" %}'"> 목록 </button>
