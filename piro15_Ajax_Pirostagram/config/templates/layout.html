@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pirostagram</title>
+</head>
+<body>
+    <h1>
+        <a href="{% url 'main:post_list' %}">Pirostagram</a>
+    </h1>
+    <h4>
+        <a href="{% url 'main:post_new' %}">게시물 작성</a>
+    </h4>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
