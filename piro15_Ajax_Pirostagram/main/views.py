@@ -13,10 +13,8 @@ def post_list(request):
 def post_detail(request, pk):
     post = Post.objects.get(id=pk)
     comments = post.comment_set.all()
-    ctx = {'post': post,
-           'comments': comments,
-           }
-    return render(request, 'main/post_detail', ctx)
+    ctx = {'post': post, 'comments': comments, }
+    return render(request, 'main/post_detail.html', ctx)
 
 
 def post_new(request):
