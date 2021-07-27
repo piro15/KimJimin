@@ -2,5 +2,29 @@
 {% load static %}
 
 {% block content %}
-<h1>post_list</h1>
+    {%for post in posts %}
+            <img src="{{ post.image.url }}" style="max-width: 35%;"/>
+            <p>
+            <h1><a href="{% url 'main:post_detail' post.pk%}">{{ post.title }}</a></h1>
+            <br>
+            {{ post.content }}
+            <br>
+            댓글
+            <br>
+            {%for comment in post.comment_set.all %}
+                {{comment.comment}}
+                <button>삭제</button>
+            {%endfor %}
+            <br>
+            {% if like %}
+                <div>❤️</div>
+            {% else %}
+                <div>🤍</div>
+            {% endif %}
+            <br>
+            <input type="text" value="댓글 달기 ...">
+            <button>게시</button>
+            </p>
+
+    {% endfor %}
 {% endblock %}

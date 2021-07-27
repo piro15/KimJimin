@@ -11,5 +11,6 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey('main.Post', on_delete=models.CASCADE)
+    # 같은 앱 내에서는 main.~말고 그냥~
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
     comment = models.TextField(null=True)

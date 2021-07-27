@@ -1,18 +1,21 @@
 from django.shortcuts import render, redirect
-from .models import Post
+from .models import *
 from .forms import PostForm
 # Create your views here.
 
 
 def post_list(request):
-    post = Post.objects.all()
-    ctx = {'post': post}
+    posts = Post.objects.all()  # 단복수형 맞게.
+    ctx = {'posts': posts}
     return render(request, 'main/post_list.html', ctx)
 
 
 def post_detail(request, pk):
     post = Post.objects.get(id=pk)
-    ctx = {'post': post}
+    comments = post.comment_set.all()
+    ctx = {'post': post,
+           'comments': comments,
+           }
     return render(request, 'main/post_detail', ctx)
 
 
