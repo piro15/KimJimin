@@ -42,10 +42,10 @@ def like_ajax(request):
     post_id = req['id']
     type = req['type']
     post = Post.objects.get(id=post_id)
-    if type == 'like':
-        post.like = False
-    else:
+    if type == 'dislike':
         post.like = True
+    else:
+        post.like = False
 
     post.save()  # DB에 저장.
 

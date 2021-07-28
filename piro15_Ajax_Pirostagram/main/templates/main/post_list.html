@@ -19,7 +19,7 @@
                 </div>
             {%endfor %}
         </div>
-        {% if like %}
+        {% if post.like %}
             <div class="post_like" onclick="onClickLike({{ post.id }},'like')">❤️</div>
         {% else %}
             <div class="post_dislike" onclick="onClickLike({{ post.id }},'dislike')">🤍</div>
