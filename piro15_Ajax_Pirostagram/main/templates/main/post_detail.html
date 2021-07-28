@@ -2,30 +2,38 @@
 {% load static %}
 
 {% block content %}
-<div class="post_{{ post.id }}">
-    <img src="{{ post.image.url }}" style="max-width: 35%;"/>
-    <h1><a href="{% url 'main:post_detail' post.pk%}">{{ post.title }}</a></h1>
-    <br>
-    {{ post.content }}
-    <br>
-    댓글
-    <div class="comments">
-        {%for comment in comments %}
-            <div class="comment_{{ comment.id }}">
-                {{comment.content}}
-                <button onclick="deleteComment({{ comment.id }})">삭제</button>
+<div class="d-flex justify-content-center">
+    <div class="post_{{ post.id }} col-9 p-3 m-2 d-flex justify-content-center border border-secondary rounded-lg">
+        <div class="d-flex align-items-center"><img class="rounded-lg" src="{{ post.image.url }}" style="max-width: 100%;"/></div>
+        <div class="col-6">
+            <div class="text-center"><a href="{% url 'main:post_detail' post.pk%}"><h6 class="text-dark">{{ post.title }}</h6></a></div>
+            <hr>
+            {{ post.content }}
+            <hr>
+            댓글
+            <hr>
+            <div class="comments">
+                {%for comment in comments %}
+                    <div class="comment_{{ comment.id }} d-flex justify-content-between">
+                        {{comment.content}}
+                        <button class="btn btn-outline-secondary btn-sm" onclick="deleteComment({{ comment.id }})">삭제</button>
+                    </div>
+                {%endfor %}
             </div>
-        {%endfor %}
+            <hr>
+            {% if post.like %}
+                <div class="post_like" onclick="onClickLike({{ post.id }},'like')">❤️</div>
+            {% else %}
+                <div class="post_dislike" onclick="onClickLike({{ post.id }},'dislike')">🤍</div>
+            {% endif %}
+            <hr>
+            <div class="d-flex justify-content-between">
+                <input class="comment col-10" type="text" placeholder="댓글 달기 ..." style="border:none;">
+                <button class="btn btn-outline-secondary btn-sm" onclick="newComment({{ post.id }})" >게시</button>
+            </div>
+        </div>
+    <!--input value는 정말 미리 들어 있는 거고 placeholder가 적절.-->
     </div>
-    {% if post.like %}
-        <div class="post_like" onclick="onClickLike({{ post.id }},'like')">❤️</div>
-    {% else %}
-        <div class="post_dislike" onclick="onClickLike({{ post.id }},'dislike')">🤍</div>
-    {% endif %}
-    <br>
-    <input class="comment" type="text" placeholder="댓글 달기 ...">
-    <button onclick="newComment({{ post.id }})" >게시</button>
-<!--input value는 정말 미리 들어 있는 거고 placeholder가 적절.-->
 </div>
 {% endblock %}
 
@@ -81,8 +89,8 @@
         if(requestComment.status < 400) {
             const {id, content} =JSON.parse(requestComment.response);
             const element = document.querySelector(`.post_${id} .comments`);
-            element.innerHTML += `<div class="comment_{{ comment.id }}">${content}
-                    <button onclick="deleteComment({{ comment.id }})">삭제</button></div>`;
+            element.innerHTML += `<div class="comment_{{ comment.id }} d-flex justify-content-between">${content}
+                    <button class="btn btn-outline-secondary btn-sm" onclick="deleteComment({{ comment.id }})">삭제</button></div>`;
         }
     }
 

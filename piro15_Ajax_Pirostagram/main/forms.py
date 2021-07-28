@@ -1,12 +1,26 @@
 from django import forms
+from django.forms.widgets import TextInput
 from .models import *
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        # Post 모델 속성들 중에서 form에 보여주고 싶은 것만
         fields = ['title', 'content', 'image']
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'border-radius: 15px;'
+            }),
+            'content': forms.Textarea(attrs={
+                'class': 'form-control',
+                'style': 'border-radius: 15px;'
+            }),
+            'image': forms.FileInput(attrs={
+                'class': 'form-control',
+                'style': 'border-radius: 15px;',
+            })
+        }
 
 
 class CommentForm(forms.ModelForm):

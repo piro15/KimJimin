@@ -1,13 +1,13 @@
 {% extends "layout.html"%}
 
 {% block content %}
-<h1>post_new</h1>
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-
-    <input type="submit" value="submit">
-</form>
+<div class="d-flex justify-content-center">
+    <div class="col-4 d-flex justify-content-center rounded-lg shadow">
+        <form class="mx-3 my-4" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                {{ form.as_p }}
+            <input class="btn  btn-outline-secondary btn-sm" type="submit" value="post">
+        </form>
+    </div>
+</div>
 {% endblock %}
