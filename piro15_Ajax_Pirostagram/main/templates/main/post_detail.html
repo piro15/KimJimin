@@ -2,29 +2,123 @@
 {% load static %}
 
 {% block content %}
-<h1>post_detail</h1>
-<img src="{{ post.image.url }}" style="max-width: 35%;"/>
-            <p>
-            <h1><a href="{% url 'main:post_detail' post.pk%}">{{ post.title }}</a></h1>
-            <br>
-            {{ post.content }}
-            <br>
-            댓글
-            <br>
-            {%for comment in comments %}
-                {{comment.comment}}
-                <button>삭제</button>
-            {%endfor %}
-            <br>
-            {% if like %}
-                <div>❤️</div>
-            {% else %}
-                <div>🤍</div>
-            {% endif %}
-            <br>
-            <input type="text" placeholder="댓글 달기 ...">
-            <button>게시</button>
-            </p>
+<div class="post_{{ post.id }}">
+    <img src="{{ post.image.url }}" style="max-width: 35%;"/>
+    <h1><a href="{% url 'main:post_detail' post.pk%}">{{ post.title }}</a></h1>
+    <br>
+    {{ post.content }}
+    <br>
+    댓글
+    <div class="comments">
+        {%for comment in comments %}
+            <div class="comment_{{ comment.id }}">
+                {{comment.content}}
+                <button onclick="deleteComment({{ comment.id }})">삭제</button>
+            </div>
+        {%endfor %}
+    </div>
+    {% if post.like %}
+        <div class="post_like" onclick="onClickLike({{ post.id }},'like')">❤️</div>
+    {% else %}
+        <div class="post_dislike" onclick="onClickLike({{ post.id }},'dislike')">🤍</div>
+    {% endif %}
+    <br>
+    <input class="comment" type="text" placeholder="댓글 달기 ...">
+    <button onclick="newComment({{ post.id }})" >게시</button>
+<!--input value는 정말 미리 들어 있는 거고 placeholder가 적절.-->
+</div>
+{% endblock %}
 
-            <!--input value는 정말 미리 들어 있는 거고 placeholder가 적절.-->
+{% block extra %}
+<script>
+    const requestLike = new XMLHttpRequest();
+
+    const onClickLike = (id, type) => {
+        const url ='/like_ajax/';
+        requestLike.open("POST", url, true);
+        requestLike.setRequestHeader(
+        'Content-Type',
+        'application/x-www-form-urlencoded'
+        );
+        requestLike.send(JSON.stringify({id:id, type:type}));
+    };
+
+
+    const likeHandleResponse = () => {
+        if(requestLike.status < 400) {
+            const {id, type} =JSON.parse(requestLike.response);
+            const element = document.querySelector(`.post_${id} .post_${type}`);
+            if (element.innerHTML=='🤍'){
+                element.innerHTML='❤️';
+            }else{
+                element.innerHTML='🤍';
+            }
+            
+        }
+    }
+
+    requestLike.onreadystatechange = () => {
+        if (requestLike.readyState === XMLHttpRequest.DONE) {
+            likeHandleResponse();
+        }
+    } 
+
+
+    const requestComment = new XMLHttpRequest();
+
+    const newComment = (id) => {
+        const url ='/new_comment/';
+        requestComment.open("POST", url, true);
+        requestComment.setRequestHeader(
+            'Content-Type',
+            'application/x-www-form-urlencoded'
+        );
+        const content = document.querySelector(`.post_${id} .comment`).value;
+        requestComment.send(JSON.stringify({id:id, content:content}));
+    };
+
+    const commentHandleResponse = () => {
+        if(requestComment.status < 400) {
+            const {id, content} =JSON.parse(requestComment.response);
+            const element = document.querySelector(`.post_${id} .comments`);
+            element.innerHTML += `<div class="comment_{{ comment.id }}">${content}
+                    <button onclick="deleteComment({{ comment.id }})">삭제</button></div>`;
+        }
+    }
+
+    requestComment.onreadystatechange = () => {
+        if (requestComment.readyState === XMLHttpRequest.DONE) {
+            commentHandleResponse();
+        }
+    } 
+
+
+    //댓글 삭제
+    const requestDelComment = new XMLHttpRequest();
+
+    const deleteComment = (id) => {
+        const url ='/delete_comment/';
+        requestDelComment.open("POST", url, true);
+        requestDelComment.setRequestHeader(
+            'Content-Type',
+            'application/x-www-form-urlencoded'
+        );
+        requestDelComment.send(JSON.stringify({id:id}));
+    };
+
+    const commentDelHandleResponse = () => {
+        if(requestDelComment.status < 400) {
+            const {id, content} =JSON.parse(requestDelComment.response);
+            const element = document.querySelector(`.comments .comment_${id}`);
+            //https://hianna.tistory.com/484
+            element.remove()
+        }
+    }
+
+    requestDelComment.onreadystatechange = () => {
+        if (requestDelComment.readyState === XMLHttpRequest.DONE) {
+            commentDelHandleResponse();
+        }
+    } 
+</script>
 {% endblock %}

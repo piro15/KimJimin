@@ -3,28 +3,126 @@
 
 {% block content %}
     {%for post in posts %}
-            <img src="{{ post.image.url }}" style="max-width: 35%;"/>
-            <p>
-            <h1><a href="{% url 'main:post_detail' post.pk%}">{{ post.title }}</a></h1>
-            <br>
-            {{ post.content }}
-            <br>
-            댓글
-            <br>
+    <div class="post_{{ post.id }}">
+        <img src="{{ post.image.url }}" style="max-width: 35%;"/>
+        <p>
+        <h1><a href="{% url 'main:post_detail' post.pk%}">{{ post.title }}</a></h1>
+        <br>
+        {{ post.content }}
+        <br>
+        댓글
+        <div class="comments">
             {%for comment in post.comment_set.all %}
-                {{comment.comment}}
-                <button>삭제</button>
+                <div class="comment_{{ comment.id }}">
+                    {{comment.content}}
+                    <button onclick="deleteComment({{ comment.id }})">삭제</button>
+                </div>
             {%endfor %}
-            <br>
-            {% if like %}
-                <div>❤️</div>
-            {% else %}
-                <div>🤍</div>
-            {% endif %}
-            <br>
-            <input type="text" placeholder="댓글 달기 ...">
-            <button>게시</button>
-            </p>
-
+        </div>
+        {% if like %}
+            <div class="post_like" onclick="onClickLike({{ post.id }},'like')">❤️</div>
+        {% else %}
+            <div class="post_dislike" onclick="onClickLike({{ post.id }},'dislike')">🤍</div>
+        {% endif %}
+        <br>
+        <input class="comment" type="text" placeholder="댓글 달기 ...">
+        <button onclick="newComment({{ post.id }})">게시</button>
+        </p>
+    </div>
     {% endfor %}
+{% endblock %}
+
+{% block extra %}
+<script>
+    const requestLike = new XMLHttpRequest();//ajax 요청에 필요한 메서드가 담겨있기 때문에 객체 불러 온 것. 
+
+    const onClickLike = (id, type) => {//게시글의 아이디와 like인지 Dislike인지. 
+        const url ='/like_ajax/';//여기로 요청을 보낸다. 
+        requestLike.open("POST", url, true);//POST방식으로 저기에 보내겠다.
+        requestLike.setRequestHeader(//거의 변화없이 항상 똑같이 쓴다. 
+            'Content-Type',
+            'application/x-www-form-urlencoded'
+        );
+        requestLike.send(JSON.stringify({id:id, type:type}));//키:값 형태의 배열.
+    };
+
+    const likeHandleResponse = () => {
+        if(requestLike.status < 400) {//정상이면
+            const {id, type} =JSON.parse(requestLike.response);//키:값 형태의 배열 받아오기
+            const element = document.querySelector(`.post_${id} .post_${type}`);
+            if (element.innerHTML=='🤍'){
+                element.innerHTML='❤️';
+            }else{
+                element.innerHTML='🤍';
+            }
+        }
+    }
+    //readystate가 변할 때 마다 처리해달라
+    requestLike.onreadystatechange = () => {
+        if (requestLike.readyState === XMLHttpRequest.DONE) {//값만 같은지 타입도 같은지 차이.
+            likeHandleResponse();
+        }
+    } 
+
+
+//새 댓글
+    const requestComment = new XMLHttpRequest();
+
+    const newComment = (id) => {
+        const url ='/new_comment/';
+        requestComment.open("POST", url, true);
+        requestComment.setRequestHeader(
+            'Content-Type',
+            'application/x-www-form-urlencoded'
+        );
+        const content = document.querySelector(`.post_${id} .comment`).value;
+        requestComment.send(JSON.stringify({id:id, content:content}));
+    };
+
+    const commentHandleResponse = () => {
+        if(requestComment.status < 400) {
+            const {id, content} =JSON.parse(requestComment.response);
+            const element = document.querySelector(`.post_${id} .comments`);
+            element.innerHTML += `<div class="comment_{{ comment.id }}">
+                ${content}
+                    <button onclick="deleteComment({{ comment.id }})">삭제</button>
+                </div>`;
+        }
+    }
+
+    requestComment.onreadystatechange = () => {
+        if (requestComment.readyState === XMLHttpRequest.DONE) {
+            commentHandleResponse();
+        }
+    } 
+
+
+//댓글 삭제
+    const requestDelComment = new XMLHttpRequest();
+
+    const deleteComment = (id) => {
+        const url ='/delete_comment/';
+        requestDelComment.open("POST", url, true);
+        requestDelComment.setRequestHeader(
+            'Content-Type',
+            'application/x-www-form-urlencoded'
+        );
+        requestDelComment.send(JSON.stringify({id:id}));
+    };
+
+    const commentDelHandleResponse = () => {
+        if(requestDelComment.status < 400) {
+            const {id, content} =JSON.parse(requestDelComment.response);
+            const element = document.querySelector(`.comments .comment_${id}`);
+            //https://hianna.tistory.com/484
+            element.remove()//이렇게만 쓰면 새로 작성하고 새로고침한 적 없는 댓글은 삭제가 안된다. 새로고침 하고서야 된다.
+        }
+    }
+
+    requestDelComment.onreadystatechange = () => {
+        if (requestDelComment.readyState === XMLHttpRequest.DONE) {
+            commentDelHandleResponse();
+        }
+    } 
+</script>
 {% endblock %}
