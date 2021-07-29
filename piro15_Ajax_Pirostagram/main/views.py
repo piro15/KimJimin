@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import *
 from .forms import *
 import json
@@ -33,6 +33,19 @@ def post_new(request):
         form = PostForm()
         ctx = {'form': form, }
         return render(request, 'main/post_new.html', ctx)
+
+
+def post_edit(request, pk):
+    post = get_object_or_404(Post, id=pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save()
+            return redirect('main:post_detail', pk)
+    else:
+        form = PostForm(instance=post)
+        ctx = {'form': form}
+        return render(request, template_name='main/post_new.html', context=ctx)
 
 
 def post_delete(request, pk):
