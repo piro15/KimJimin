@@ -61,9 +61,10 @@ def new_comment(request):
     content = req['content']
     post = Post.objects.get(id=post_id)
     comment = Comment.objects.create(post=post, content=content)
+    comment_id = comment.id
 # https://wayhome25.github.io/django/2017/04/01/django-ep9-crud/
 # 두 번째 방법으로 하면 .save() 쓰지 X
-    return JsonResponse({'id': post_id, 'content': content})
+    return JsonResponse({'id': post_id, 'content': content, 'comment_id': comment_id})
 
 
 @csrf_exempt

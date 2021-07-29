@@ -88,12 +88,10 @@
 
     const commentHandleResponse = () => {
         if(requestComment.status < 400) {
-            const {id, content} =JSON.parse(requestComment.response);
+            const {id, content, comment_id} =JSON.parse(requestComment.response);
             const element = document.querySelector(`.post_${id} .comments`);
-            element.innerHTML += `<div class="comment_{{ comment.id }} d-flex justify-content-between">
-                ${content}
-                    <button class="btn btn-outline-secondary btn-sm" onclick="deleteComment({{ comment.id }})">삭제</button>
-                </div>`;
+            element.innerHTML += `<div class="comment_${comment_id} d-flex justify-content-between">${content}
+                    <button class="btn btn-outline-secondary btn-sm" onclick="deleteComment(${comment_id})">삭제</button></div>`;
         }
     }
 
@@ -101,7 +99,7 @@
         if (requestComment.readyState === XMLHttpRequest.DONE) {
             commentHandleResponse();
         }
-    } 
+    }
 
 
 //댓글 삭제
@@ -122,7 +120,7 @@
             const {id, content} =JSON.parse(requestDelComment.response);
             const element = document.querySelector(`.comments .comment_${id}`);
             //https://hianna.tistory.com/484
-            element.remove()//이렇게만 쓰면 새로 작성하고 새로고침한 적 없는 댓글은 삭제가 안된다. 새로고침 하고서야 된다.
+            element.remove()
         }
     }
 

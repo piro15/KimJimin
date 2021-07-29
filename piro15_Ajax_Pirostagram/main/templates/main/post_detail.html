@@ -87,10 +87,10 @@
 
     const commentHandleResponse = () => {
         if(requestComment.status < 400) {
-            const {id, content} =JSON.parse(requestComment.response);
+            const {id, content, comment_id} =JSON.parse(requestComment.response);
             const element = document.querySelector(`.post_${id} .comments`);
-            element.innerHTML += `<div class="comment_{{ comment.id }} d-flex justify-content-between">${content}
-                    <button class="btn btn-outline-secondary btn-sm" onclick="deleteComment({{ comment.id }})">삭제</button></div>`;
+            element.innerHTML += `<div class="comment_${comment_id} d-flex justify-content-between">${content}
+                    <button class="btn btn-outline-secondary btn-sm" onclick="deleteComment(${comment_id})">삭제</button></div>`;
         }
     }
 
