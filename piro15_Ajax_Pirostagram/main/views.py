@@ -35,6 +35,12 @@ def post_new(request):
         return render(request, 'main/post_new.html', ctx)
 
 
+def post_delete(request, pk):
+    post = Post.objects.get(id=pk)
+    post.delete()
+    return redirect('main:post_list')
+
+
 @csrf_exempt
 def like_ajax(request):
     # 뷰에서 쓰려면 파이썬 객체로 가져와야 해서 파이썬 객체로 파싱해주는 json.loads 작성
