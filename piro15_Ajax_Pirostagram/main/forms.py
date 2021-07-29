@@ -16,7 +16,7 @@ class PostForm(forms.ModelForm):
                 'class': 'form-control',
                 'style': 'border-radius: 15px;'
             }),
-            'image': forms.FileInput(attrs={
+            'image': forms.ClearableFileInput(attrs={
                 'class': 'form-control',
                 'style': 'border-radius: 15px;',
             })
