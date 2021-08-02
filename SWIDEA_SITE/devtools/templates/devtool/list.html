@@ -1,4 +1,5 @@
-
+{% extends "base.html" %}
+{% block content %}
 <a href="{% url 'devtools:tool_create' %}">새 개발 툴 등록</a>
 <br/>
 {%for tool in tool %}
@@ -9,3 +10,6 @@
     <p>{{ tool.kind }}</p>
     <p>{{ tool.description }}</p>
 {% endfor %}
+
+
+{% endblock %}

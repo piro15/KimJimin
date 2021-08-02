@@ -1,4 +1,6 @@
+{% extends "base.html" %}
 
+{% block content %}
 <h1>{{ idea.title }}</h1>
 {% if idea.image %}
     <img src="{{ idea.image.url }}" style="max-width: 100%;"/>
@@ -13,3 +15,5 @@
     <button class="btn" onclick="location.href='{% url "ideas:idea_delete" idea.pk %}'"> 삭제 </button>
     <button class="btn" onclick="location.href='{% url "ideas:idea_edit" idea.pk %}'"> 수정 </button>
     <button class="btn" onclick="location.href='{% url "ideas:idea_list" %}'"> 목록 </button>
+
+{% endblock %}

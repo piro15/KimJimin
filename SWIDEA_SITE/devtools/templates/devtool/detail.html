@@ -1,4 +1,6 @@
+{% extends "base.html" %}
 
+{% block content %}
 <h1>{{ tool.name }}</h1>
 <br/>
     {{ tool.kind }}
@@ -12,3 +14,5 @@
     <button class="btn" onclick="location.href='{% url 'devtools:tool_delete' tool.pk %}'">삭제</button>
     <button class="btn" onclick="location.href='{% url 'devtools:tool_edit' tool.pk %}'">수정</button>
     <button class="btn" onclick="location.href='{% url "devtools:tool_list" %}'">목록</button>
+
+{% endblock %}

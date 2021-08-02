@@ -1,23 +1,31 @@
-
-<a href="{% url 'ideas:idea_create' %}">새 아이디어 등록</a>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<button class="btn btn-sm border-primary mt-3 ml-3" onclick="location.href='{% url 'ideas:idea_create' %}'">새 아이디어 등록</a></button>
 <br/>
-{%for idea in idea %}
-{% if idea.image %}
-        <img src="{{ idea.image.url }}" style="max-width: 100%;"/>
-{%endif%}
-        <p>
-        <h1><a href="{% url 'ideas:idea_detail' idea.pk%}">{{ idea.title }}</a></h1>
-        <p>예상 개발 툴:{{ idea.devtool }}</p>
-        아이디어 관심도: {{ idea.interest }}
-        <button class="btn" id="up">+</button>
-        <button class="btn" id="down">-</button>
-        </p>
+<div class="d-flex justify-content-evenly">
+        {%for idea in idea %}
+        <div class="p-3 d-flex flex-column align-items-center">
+                <img src="{{ idea.image.url }}" style="max-width: 100%;"/>
+                <div>
+                        <h3><a href="{% url 'ideas:idea_detail' idea.pk%}">{{ idea.title }}</a></h3>
+                        <span class="font-weight-bold">예상 개발 툴:</span> {{ idea.devtool }}
+                        <br>
+                        <span class="font-weight-bold">아이디어 관심도:</span> {{ idea.interest }}
+                        <button class="btn btn-sm border-primary" id="up">+</button>
+                        <button class="btn btn-sm border-primary" id="down">-</button>
+                        
+                </div>
+        </div>
+        {% endfor %}
+</div>
+{% endblock %}
 
-{% endfor %}
-
+{% block extra %}
 <script>
         const button = document.querySelectorAll('.btn');
         button.forEach(button => button.addEventListener('click',()=> {
         console.log('Click!!!');
         }));
 </script>
+{% endblock %}
