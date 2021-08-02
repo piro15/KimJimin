@@ -1,19 +1,22 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h1>{{ idea.title }}</h1>
-{% if idea.image %}
-    <img src="{{ idea.image.url }}" style="max-width: 100%;"/>
-    {%endif%}
-<br/>
-    1) 아이디어 관심도: {{ idea.interest }}
-    <br/>
-    2) 예상 개발 툴:<a href="{% url 'devtools:tool_detail' idea.devtool.pk%}">{{ idea.devtool }}</a>
-    <br/>
-    3) 아이디어 설명:{{ idea.content }}
-
-    <button class="btn" onclick="location.href='{% url "ideas:idea_delete" idea.pk %}'"> 삭제 </button>
-    <button class="btn" onclick="location.href='{% url "ideas:idea_edit" idea.pk %}'"> 수정 </button>
-    <button class="btn" onclick="location.href='{% url "ideas:idea_list" %}'"> 목록 </button>
-
+<div class="d-flex justify-content-center m-5">
+    <div class=" col-6 bg-dark text-light p-3 d-flex flex-column align-items-center rounded-lg">
+        <h2 class="pb-2">{{ idea.title }}</h2>
+            <img class="p-2" src="{{ idea.image.url }}" style="width: 300px;"/>
+        <div class="py-3">
+            1) 아이디어 관심도: {{ idea.interest }}
+            <br/>
+            2) 예상 개발 툴:<a class="text-light" href="{% url 'devtools:tool_detail' idea.devtool.pk%}"> {{ idea.devtool }}</a>
+            <br/>
+            3) 아이디어 설명: {{ idea.content }}
+        </div>
+        <div>
+            <button class="btn btn-sm bg-secondary text-light mx-2" onclick="location.href='{% url "ideas:idea_delete" idea.pk %}'"> 삭제 </button>
+            <button class="btn btn-sm bg-secondary text-light mx-2" onclick="location.href='{% url "ideas:idea_edit" idea.pk %}'"> 수정 </button>
+            <button class="btn btn-sm bg-secondary text-light mx-2" onclick="location.href='{% url "ideas:idea_list" %}'"> 목록 </button>
+        </div>
+    </div>
+</div>
 {% endblock %}

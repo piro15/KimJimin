@@ -10,7 +10,7 @@
 </head>
 <body class=" bg-secondary">
     <nav class="navbar shadow navbar-dark bg-dark">
-        <a class="col text-center text-light pt-2"><h4>SW idea site</h4></a>
+        <a href="{% url 'ideas:idea_list'%}" class="col text-center text-light pt-2"><h4>SW idea site</h4></a>
     </nav>
     {% block content %}
     {% endblock %}
